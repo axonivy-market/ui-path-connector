@@ -1,1 +1,20 @@
 RestClients:
+  #Orchestrator API
+  UI Path RPA (UiPath.WebApi 13.0):
+    UUID: c700c640-4f76-4cbe-8724-dbc663d8bc0a
+    Url: https://platform.uipath.com/
+    Icon: res:/webContent/icons/uipath.png
+    Features:
+    - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+    - com.axonivy.connector.uipath.OAuth2Feature
+    - com.axonivy.connector.uipath.TenantHeaderFeature
+    Properties:
+      AUTH.tenant: AXONPRESALES
+      AUTH.clientId: ''
+      AUTH.userKey: ''
+      jersey.config.client.followRedirects: 'false'
+      JSON.Serialization.PROPERTY_INCLUSION: NON_NULL
+      JSON.Mapper.ACCEPT_CASE_INSENSITIVE_PROPERTIES: 'true'
+    OpenAPI:
+      SpecUrl: https://cloud.uipath.com/AXONPRESALES/AXONPRESALES/swagger/v13.0/swagger.json
+      Namespace: com.uipath.orchestrator
