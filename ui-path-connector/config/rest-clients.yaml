@@ -2,7 +2,7 @@ RestClients:
   #Orchestrator API
   UI Path RPA (UiPath.WebApi 13.0):
     UUID: c700c640-4f76-4cbe-8724-dbc663d8bc0a
-    Url: https://platform.uipath.com/
+    Url: https://cloud.uipath.com/
     Icon: res:/webContent/icons/uipath.png
     Features:
     - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
@@ -11,7 +11,7 @@ RestClients:
     Properties:
       AUTH.tenant: AXONPRESALES
       AUTH.clientId: ''
-      AUTH.userKey: ''
+      AUTH.userKey: ${decrypt:}
       jersey.config.client.followRedirects: 'false'
       JSON.Serialization.PROPERTY_INCLUSION: NON_NULL
       JSON.Mapper.ACCEPT_CASE_INSENSITIVE_PROPERTIES: 'true'
