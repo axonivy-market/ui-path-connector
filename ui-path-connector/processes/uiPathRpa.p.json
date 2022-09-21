@@ -1,0 +1,217 @@
+{
+  "format" : "9.4.20",
+  "id" : "175F58F3612E10B1",
+  "data" : "com.axonivy.connector.uipath.ui.path.connector.UiPathRpa",
+  "kind" : "CALLABLE_SUB",
+  "description" : "Starts UI Path RPA jobs.",
+  "elements" : [ {
+      "id" : "f3",
+      "type" : "RestClientCall",
+      "name" : [
+        "**RPA**: UI Path",
+        "Read License"
+      ],
+      "config" : {
+        "path" : "/odata/Settings/UiPath.Server.Configuration.OData.GetLicense",
+        "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "statusErrorCode" : ">> Ignore status",
+        "responseMapping" : {
+          "out.license" : "result"
+        },
+        "resultType" : "com.uipath.orchestrator.LicenseDto",
+        "responseCode" : [
+          "import com.axonivy.connector.uipath.OAuth2Feature;",
+          "",
+          "OAuth2Feature.analyzeAuth(response);"
+        ]
+      },
+      "visual" : {
+        "at" : { "x" : 312, "y" : 64 },
+        "size" : { "width" : 128, "height" : 60 },
+        "description" : [
+          "Simple request against RPA Orchestration Platform provided by UIPath",
+          " (mainly to enforce an active OAUTH session)"
+        ]
+      },
+      "connect" : { "id" : "f6", "to" : "f5" }
+    }, {
+      "id" : "f5",
+      "type" : "RestClientCall",
+      "name" : [
+        "**RPA**: UI Path",
+        "Read Jobs"
+      ],
+      "config" : {
+        "path" : "/odata/Jobs",
+        "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "statusErrorCode" : "ivy:error:rest:client",
+        "responseMapping" : {
+          "out.jobs" : "result.value"
+        },
+        "resultType" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfJobDto",
+        "responseCode" : "ivy.log.info(\"found \"+result.value.size()+\" RPA jobs\");"
+      },
+      "visual" : {
+        "at" : { "x" : 472, "y" : 64 },
+        "size" : { "width" : 128, "height" : 60 }
+      },
+      "connect" : { "id" : "f2", "to" : "f0" }
+    }, {
+      "id" : "f0",
+      "type" : "RestClientCall",
+      "name" : [
+        "**RPA**: UI Path",
+        "Read Robots"
+      ],
+      "config" : {
+        "path" : "/odata/Robots",
+        "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "method" : "GET",
+        "queryParams" : {
+          "$filter" : "\"Type eq 'UNATTENDED'\""
+        },
+        "statusErrorCode" : "ivy:error:rest:client",
+        "clientCode" : [
+          "import com.uipath.orchestrator.RobotDto;",
+          "import javax.ws.rs.core.GenericEntity;",
+          "",
+          "List<String> filters;",
+          "filters.add(\"Type eq 'Unattended'\");",
+          "",
+          "ivy.log.info(\"filtered:::: \"+client.queryParam(\"$filter\", filters).request().get(String.class));"
+        ],
+        "responseMapping" : {
+          "out.robots" : "result.value"
+        },
+        "resultType" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfRobotDto",
+        "responseCode" : "ivy.log.info(\"found \"+result.value.size()+\" RPA robots\");"
+      },
+      "visual" : {
+        "at" : { "x" : 472, "y" : 144 },
+        "size" : { "width" : 128, "height" : 60 }
+      },
+      "connect" : { "id" : "f4", "to" : "f22" }
+    }, {
+      "id" : "f7",
+      "type" : "ProcessAnnotation",
+      "name" : [
+        "**Robotics Process Automation (RPA)**",
+        "uses OpenAPI calls to interact with robots ",
+        "on the UIPath orchestration platform"
+      ],
+      "visual" : {
+        "at" : { "x" : 216, "y" : 160 },
+        "size" : { "width" : 272, "height" : 60 }
+      }
+    }, {
+      "id" : "f22",
+      "type" : "RestClientCall",
+      "name" : [
+        "**RPA**: UI Path",
+        "Read Releases"
+      ],
+      "config" : {
+        "path" : "/odata/Releases",
+        "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "queryParams" : {
+          "$filter" : "\"contains(ProcessKey, 'order')\""
+        },
+        "statusErrorCode" : "ivy:error:rest:client",
+        "responseMapping" : {
+          "out.releases" : "result.value"
+        },
+        "resultType" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfReleaseDto",
+        "responseCode" : "ivy.log.info(\"found \"+result.value.size()+\" Process releases\");"
+      },
+      "visual" : {
+        "at" : { "x" : 472, "y" : 224 },
+        "size" : { "width" : 128, "height" : 60 }
+      },
+      "connect" : { "id" : "f8", "to" : "f24" }
+    }, {
+      "id" : "f24",
+      "type" : "RestClientCall",
+      "name" : [
+        "**RPA**: UI Path",
+        "Start Job"
+      ],
+      "config" : {
+        "bodyObjectMapping" : {
+          "param.startInfo.inputArguments" : "\"\"",
+          "param.startInfo.jobPriority" : "com.uipath.orchestrator.StartProcessDto.JobPriorityEnum.NORMAL",
+          "param.startInfo.jobsCount" : "0",
+          "param.startInfo.noOfRobots" : "0",
+          "param.startInfo.releaseKey" : "in.releases.get(0).key",
+          "param.startInfo.robotIds" : "[in.robots.get(0).id]",
+          "param.startInfo.source" : "com.uipath.orchestrator.StartProcessDto.SourceEnum.MANUAL",
+          "param.startInfo.strategy" : "com.uipath.orchestrator.StartProcessDto.StrategyEnum.SPECIFIC"
+        },
+        "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+        "method" : "POST",
+        "statusErrorCode" : "ivy:error:rest:client",
+        "bodyObjectType" : "com.uipath.orchestrator.StartJobsRequest",
+        "bodyInputType" : "ENTITY",
+        "responseCode" : "ivy.log.info(\"started \"+result);",
+        "path" : "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "responseMapping" : {
+          "out.jobs" : "result.value"
+        },
+        "bodyObjectCode" : [
+          "for(com.uipath.orchestrator.ReleaseDto rel : in.releases){",
+          "  if (rel.processKey.equals(in.jobToStart)){",
+          "    ivy.log.info(\"release in use \"+rel);",
+          "    param.startInfo.releaseKey = rel.key;",
+          "  }",
+          "}"
+        ],
+        "resultType" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfJobDto"
+      },
+      "visual" : {
+        "at" : { "x" : 472, "y" : 304 },
+        "size" : { "width" : 128, "height" : 60 }
+      },
+      "connect" : { "id" : "f9", "to" : "f15" }
+    }, {
+      "id" : "f14",
+      "type" : "CallSubStart",
+      "name" : "startJob(String)",
+      "config" : {
+        "callSignature" : "startJob",
+        "input" : {
+          "params" : [
+            { "name" : "job", "type" : "String", "desc" : "The name of the job to start" }
+          ],
+          "map" : {
+            "out.jobToStart" : "param.job"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "jobs", "type" : "java.util.List<com.uipath.orchestrator.JobDto>", "desc" : "List of scheduled processes on a robot" }
+          ],
+          "map" : {
+            "result.jobs" : "in.jobs"
+          }
+        },
+        "tags" : "CONNECTOR"
+      },
+      "visual" : {
+        "at" : { "x" : 88, "y" : 64 },
+        "labelOffset" : { "x" : 41, "y" : 37 },
+        "description" : "Starts a UI Path RPA job.",
+        "icon" : "res:/webContent/icons/uipath.png?small"
+      },
+      "connect" : { "id" : "f17", "to" : "f3" }
+    }, {
+      "id" : "f15",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 608, "y" : 304 }
+      }
+    } ]
+}
