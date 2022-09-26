@@ -3,7 +3,7 @@
   <groupId>com.axonivy.connector.uipath</groupId>
   <name>ui-path-connector</name>
   <artifactId>ui-path-connector-modules</artifactId>
-  <version>9.4.0</version>
+  <version>9.4.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
