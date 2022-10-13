@@ -1,9 +1,11 @@
 {
-  "format" : "9.4.20",
+  "format" : "10.0.0",
   "id" : "175F58F3612E10B1",
-  "data" : "com.axonivy.connector.uipath.ui.path.connector.UiPathRpa",
   "kind" : "CALLABLE_SUB",
   "description" : "Starts UI Path RPA jobs.",
+  "config" : {
+    "data" : "com.axonivy.connector.uipath.ui.path.connector.UiPathRpa"
+  },
   "elements" : [ {
       "id" : "f3",
       "type" : "RestClientCall",
