@@ -6,4 +6,9 @@
 # '<project>/Config/_<environment>/variables.yaml
 #
 Variables:
-#  myVariable: value
+  uiPath-connector:
+    tenant: 'AXONPRESALES'
+    clientId: ''
+    # [password]
+    userKey: ''
+    
