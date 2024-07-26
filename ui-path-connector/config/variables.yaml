@@ -6,9 +6,14 @@
 # '<project>/Config/_<environment>/variables.yaml
 #
 Variables:
-  uiPath-connector:
-    tenant: 'AXONPRESALES'
+  # Login to your UiPath by https://cloud.uipath.com to get the API Access info
+  uiPathConnector:
+    # The id of organization, access to Admin > Tenant > Services > API Access > Organization ID
+    organization: ''
+    # The name of UiPath tenant, access to Admin > Tenant > Services > API Access > Name
+    tenant: ''
+    # The ID of service client, access to Admin > Tenant > Services > API Access > Client ID
     clientId: ''
+    # The key of service user, access to Admin > Tenant > Services > API Access > User Key
     # [password]
     userKey: ''
-    
