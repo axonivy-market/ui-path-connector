@@ -8,8 +8,6 @@ processes. This connector:
 - Enables you to steer robotic work from your workflow process. 
 - Makes the UiPath RPA API features easy and attractive to use in business
   processes.
-- Supports you with an easy-to-copy demo implementation to reduce your
-  integration effort.
 
 ## Demo
 
