@@ -278,7 +278,8 @@
           "  robot.machineId = exMachineDto.id;",
           "  robot.machineName = exMachineDto.name;",
           "  in.machines.add(robot);",
-          "}"
+          "}",
+          "in.startInfo.machineRobots = in.machines;"
         ]
       },
       "visual" : {
