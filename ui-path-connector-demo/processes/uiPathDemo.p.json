@@ -1,5 +1,5 @@
 {
-  "format" : "10.0.0",
+  "$schema" : "https://json-schema.axonivy.com/process/11.3.0/process.json",
   "id" : "17603AC61307C899",
   "config" : {
     "data" : "com.axonivy.connector.uipath.ui.path.connector.demo.UiPathDemoData"
@@ -18,16 +18,21 @@
         "GetOrders.ivp"
       ],
       "config" : {
-        "callSignature" : "robotGetOrders",
-        "outLink" : "robotGetOrders.ivp",
-        "startName" : "DEMO: RPA integration with UIPath",
-        "tags" : "demo"
+        "signature" : "robotGetOrders",
+        "request" : {
+          "name" : "DEMO: RPA integration with UIPath"
+        }
       },
+      "tags" : [
+        "demo"
+      ],
       "visual" : {
         "at" : { "x" : 96, "y" : 64 },
         "labelOffset" : { "x" : 17, "y" : 41 }
       },
-      "connect" : { "id" : "f2", "to" : "f0" }
+      "connect" : [
+        { "id" : "f2", "to" : "f0" }
+      ]
     }, {
       "id" : "f0",
       "type" : "SubProcessCall",
@@ -35,9 +40,6 @@
       "config" : {
         "processCall" : "uiPathRpa:startJob(String)",
         "call" : {
-          "params" : [
-            { "name" : "job", "type" : "String" }
-          ],
           "map" : {
             "param.job" : "\"getOrders\""
           }
@@ -47,7 +49,9 @@
         "at" : { "x" : 224, "y" : 64 },
         "icon" : "res:/webContent/icons/uipath.png"
       },
-      "connect" : { "id" : "f3", "to" : "f1" }
+      "connect" : [
+        { "id" : "f3", "to" : "f1" }
+      ]
     }, {
       "id" : "f4",
       "type" : "ErrorStartEvent",
@@ -63,7 +67,7 @@
       },
       "visual" : {
         "at" : { "x" : 512, "y" : 64 },
-        "labelOffset" : { "x" : 11, "y" : 35 }
+        "labelOffset" : { "x" : 11 }
       }
     }, {
       "id" : "f12",
@@ -81,20 +85,25 @@
         "at" : { "x" : 744, "y" : 64 },
         "size" : { "width" : 336, "height" : 80 }
       },
-      "connect" : { "id" : "f5", "to" : "f4" }
+      "connect" : [
+        { "id" : "f5", "to" : "f4" }
+      ]
     }, {
       "id" : "f6",
       "type" : "RequestStart",
       "name" : "triggerAllActiveJobs.ivp",
       "config" : {
-        "callSignature" : "triggerAllActiveJobs",
-        "outLink" : "triggerAllActiveJobs.ivp",
-        "startName" : "Trigger to start all active Jobs in Orcherstator"
+        "signature" : "triggerAllActiveJobs",
+        "request" : {
+          "name" : "Trigger to start all active Jobs in Orcherstator"
+        }
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 192 }
       },
-      "connect" : { "id" : "f11", "to" : "f10" }
+      "connect" : [
+        { "id" : "f11", "to" : "f10" }
+      ]
     }, {
       "id" : "f7",
       "type" : "TaskEnd",
@@ -112,20 +121,25 @@
         "at" : { "x" : 224, "y" : 192 },
         "icon" : "res:/webContent/icons/uipath.png"
       },
-      "connect" : { "id" : "f8", "to" : "f7" }
+      "connect" : [
+        { "id" : "f8", "to" : "f7" }
+      ]
     }, {
       "id" : "f13",
       "type" : "RequestStart",
       "name" : "startJobByName.ivp",
       "config" : {
-        "callSignature" : "startJobByName",
-        "outLink" : "startJobByName.ivp",
-        "startName" : "Trigger to start job by name in Orcherstator"
+        "signature" : "startJobByName",
+        "request" : {
+          "name" : "Trigger to start job by name in Orcherstator"
+        }
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 320 }
       },
-      "connect" : { "id" : "f16", "to" : "f15" }
+      "connect" : [
+        { "id" : "f16", "to" : "f15" }
+      ]
     }, {
       "id" : "f14",
       "type" : "TaskEnd",
@@ -142,10 +156,6 @@
       "config" : {
         "processCall" : "uiPathJob:startJobByName(String,String)",
         "call" : {
-          "params" : [
-            { "name" : "jobName", "type" : "String" },
-            { "name" : "jobArguments", "type" : "String" }
-          ],
           "map" : {
             "param.jobName" : "\"SendEmailFromGmail\""
           }
@@ -155,6 +165,8 @@
         "at" : { "x" : 224, "y" : 320 },
         "icon" : "res:/webContent/icons/uipath.png"
       },
-      "connect" : { "id" : "f17", "to" : "f14" }
+      "connect" : [
+        { "id" : "f17", "to" : "f14" }
+      ]
     } ]
 }

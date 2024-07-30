@@ -3,7 +3,7 @@
   <groupId>com.axonivy.connector.uipath</groupId>
   <name>ui-path-connector</name>
   <artifactId>ui-path-connector-modules</artifactId>
-  <version>10.0.3-SNAPSHOT</version>
+  <version>11.3.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
@@ -48,7 +48,7 @@
       <plugin>
         <groupId>com.axonivy.ivy.ci</groupId>
         <artifactId>project-build-plugin</artifactId>
-        <version>10.0.16</version>
+        <version>11.3.0</version>
         <extensions>true</extensions>
       </plugin>
     </plugins>

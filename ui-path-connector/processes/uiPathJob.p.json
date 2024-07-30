@@ -1,5 +1,5 @@
 {
-  "format" : "10.0.0",
+  "$schema" : "https://json-schema.axonivy.com/process/11.3.0/process.json",
   "id" : "190E93ECBBC86C6F",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -10,13 +10,15 @@
       "type" : "CallSubStart",
       "name" : "startAllActiveJobs()",
       "config" : {
-        "callSignature" : "startAllActiveJobs"
+        "signature" : "startAllActiveJobs"
       },
       "visual" : {
         "at" : { "x" : 128, "y" : 64 },
         "icon" : "res:/webContent/icons/uipath.png?small"
       },
-      "connect" : { "id" : "f21", "to" : "f12" }
+      "connect" : [
+        { "id" : "f21", "to" : "f12" }
+      ]
     }, {
       "id" : "f1",
       "type" : "CallSubEnd",
@@ -35,19 +37,26 @@
       "visual" : {
         "at" : { "x" : 608, "y" : 176 }
       },
-      "connect" : { "id" : "f18", "to" : "f17", "via" : [ { "x" : 608, "y" : 112 } ] }
+      "connect" : [
+        { "id" : "f18", "to" : "f17", "via" : [ { "x" : 608, "y" : 112 } ] }
+      ]
     }, {
       "id" : "f17",
       "type" : "Alternative",
       "name" : "hasRelease?",
+      "config" : {
+        "conditions" : {
+          "f20" : "in.releases.isEmpty()"
+        }
+      },
       "visual" : {
         "at" : { "x" : 448, "y" : 64 },
-        "labelOffset" : { "x" : 16, "y" : -24 }
+        "labelOffset" : { "y" : -24 }
       },
       "connect" : [
         { "id" : "f20", "to" : "f1", "label" : {
             "name" : "no"
-          }, "condition" : "in.releases.isEmpty()" },
+          } },
         { "id" : "f6", "to" : "f4", "label" : {
             "name" : "yes"
           } }
@@ -57,11 +66,11 @@
       "type" : "CallSubStart",
       "name" : "startJobByName(String,String)",
       "config" : {
-        "callSignature" : "startJobByName",
+        "signature" : "startJobByName",
         "input" : {
           "params" : [
-            { "name" : "jobName", "type" : "String" },
-            { "name" : "jobArguments", "type" : "String" }
+            { "name" : "jobName", "type" : "String", "desc" : "" },
+            { "name" : "jobArguments", "type" : "String", "desc" : "" }
           ],
           "map" : {
             "out.jobArguments" : "param.jobArguments",
@@ -73,7 +82,9 @@
         "at" : { "x" : 128, "y" : 288 },
         "icon" : "res:/webContent/icons/uipath.png?small"
       },
-      "connect" : { "id" : "f44", "to" : "f43" }
+      "connect" : [
+        { "id" : "f44", "to" : "f43" }
+      ]
     }, {
       "id" : "f11",
       "type" : "CallSubEnd",
@@ -92,19 +103,26 @@
       "visual" : {
         "at" : { "x" : 608, "y" : 408 }
       },
-      "connect" : { "id" : "f30", "to" : "f26", "via" : [ { "x" : 608, "y" : 328 } ] }
+      "connect" : [
+        { "id" : "f30", "to" : "f26", "via" : [ { "x" : 608, "y" : 328 } ] }
+      ]
     }, {
       "id" : "f26",
       "type" : "Alternative",
       "name" : "hasRelease?",
+      "config" : {
+        "conditions" : {
+          "f35" : "in.releases.isEmpty()"
+        }
+      },
       "visual" : {
         "at" : { "x" : 448, "y" : 288 },
-        "labelOffset" : { "x" : 16, "y" : -16 }
+        "labelOffset" : { "y" : -16 }
       },
       "connect" : [
         { "id" : "f35", "to" : "f11", "label" : {
             "name" : "no"
-          }, "condition" : "in.releases.isEmpty()" },
+          } },
         { "id" : "f27", "to" : "f22", "label" : {
             "name" : "yes"
           } }
@@ -114,7 +132,7 @@
       "type" : "CallSubStart",
       "name" : "getReleases(String)",
       "config" : {
-        "callSignature" : "getReleases",
+        "signature" : "getReleases",
         "input" : {
           "params" : [
             { "name" : "name", "type" : "String", "desc" : "Optional field" }
@@ -125,8 +143,8 @@
         },
         "result" : {
           "params" : [
-            { "name" : "releases", "type" : "java.util.List<com.uipath.orchestrator.ReleaseDto>" },
-            { "name" : "orgId", "type" : "Long" }
+            { "name" : "releases", "type" : "java.util.List<com.uipath.orchestrator.ReleaseDto>", "desc" : "" },
+            { "name" : "orgId", "type" : "Long", "desc" : "" }
           ],
           "map" : {
             "result.releases" : "in.releases",
@@ -138,7 +156,9 @@
         "at" : { "x" : 128, "y" : 528 },
         "icon" : "res:/webContent/icons/uipath.png?small"
       },
-      "connect" : { "id" : "f39", "to" : "f37" }
+      "connect" : [
+        { "id" : "f39", "to" : "f37" }
+      ]
     }, {
       "id" : "f37",
       "type" : "RestClientCall",
@@ -147,21 +167,27 @@
         "Folders"
       ],
       "config" : {
-        "path" : "/odata/Folders",
-        "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
-        "clientErrorCode" : "ivy:error:rest:client",
-        "statusErrorCode" : "ivy:error:rest:client",
-        "resultType" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfFolderDto",
-        "responseCode" : [
-          "// Should throw exception if no organizationunitId found",
-          "out.organizationunitId = result.value.get(0).id;"
-        ]
+        "target" : {
+          "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+          "path" : "/odata/Folders"
+        },
+        "response" : {
+          "entity" : {
+            "type" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfFolderDto",
+            "code" : [
+              "// Should throw exception if no organizationunitId found",
+              "out.organizationunitId = result.value.get(0).id;"
+            ]
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 280, "y" : 528 },
         "icon" : "res:/webContent/icons/uipath.png"
       },
-      "connect" : { "id" : "f9", "to" : "f7" }
+      "connect" : [
+        { "id" : "f9", "to" : "f7" }
+      ]
     }, {
       "id" : "f38",
       "type" : "RestClientCall",
@@ -170,36 +196,41 @@
         "Releases"
       ],
       "config" : {
-        "path" : "/odata/Releases",
-        "headers" : {
-          "Accept" : "*/*",
-          "X-Uipath-Organizationunitid" : "in.organizationunitId"
+        "target" : {
+          "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+          "path" : "/odata/Releases",
+          "queryParams" : {
+            "mandatoryPermissions" : "",
+            "atLeastOnePermissions" : "",
+            "$expand" : "",
+            "$filter" : "in.#filter is initialized ? in.#filter : null",
+            "$select" : "",
+            "$orderby" : "",
+            "$top" : "",
+            "$skip" : "",
+            "$count" : ""
+          },
+          "headers" : {
+            "X-Uipath-Organizationunitid" : "in.organizationunitId"
+          }
         },
-        "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
-        "clientErrorCode" : "ivy:error:rest:client",
-        "queryParams" : {
-          "mandatoryPermissions" : "",
-          "atLeastOnePermissions" : "",
-          "$expand" : "",
-          "$filter" : "in.#filter is initialized ? in.#filter : null",
-          "$select" : "",
-          "$orderby" : "",
-          "$top" : "",
-          "$skip" : "",
-          "$count" : ""
-        },
-        "statusErrorCode" : "ivy:error:rest:client",
-        "responseMapping" : {
-          "out.releases" : "result.value"
-        },
-        "resultType" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfReleaseDto",
-        "responseCode" : "ivy.log.warn(\"Found release {0}\", result.value.size());"
+        "response" : {
+          "entity" : {
+            "type" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfReleaseDto",
+            "map" : {
+              "out.releases" : "result.value"
+            },
+            "code" : "ivy.log.warn(\"Found release {0}\", result.value.size());"
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 608, "y" : 528 },
         "icon" : "res:/webContent/icons/uipath.png"
       },
-      "connect" : { "id" : "f42", "to" : "f41" }
+      "connect" : [
+        { "id" : "f42", "to" : "f41" }
+      ]
     }, {
       "id" : "f41",
       "type" : "CallSubEnd",
@@ -212,19 +243,16 @@
       "name" : "Get Releases",
       "config" : {
         "processCall" : "uiPathJob:getReleases(String)",
+        "call" : {
+          "map" : {
+            "param.name" : "in.jobName"
+          }
+        },
         "output" : {
           "map" : {
             "out" : "in",
             "out.organizationunitId" : "result.orgId",
             "out.releases" : "result.releases"
-          }
-        },
-        "call" : {
-          "params" : [
-            { "name" : "name", "type" : "String" }
-          ],
-          "map" : {
-            "param.name" : "in.jobName"
           }
         }
       },
@@ -232,7 +260,9 @@
         "at" : { "x" : 280, "y" : 288 },
         "icon" : "res:/webContent/icons/uipath.png"
       },
-      "connect" : { "id" : "f5", "to" : "f26" }
+      "connect" : [
+        { "id" : "f5", "to" : "f26" }
+      ]
     }, {
       "id" : "f12",
       "type" : "SubProcessCall",
@@ -245,18 +275,15 @@
             "out.organizationunitId" : "result.orgId",
             "out.releases" : "result.releases"
           }
-        },
-        "call" : {
-          "params" : [
-            { "name" : "name", "type" : "String" }
-          ]
         }
       },
       "visual" : {
         "at" : { "x" : 280, "y" : 64 },
         "icon" : "res:/webContent/icons/uipath.png"
       },
-      "connect" : { "id" : "f23", "to" : "f17" }
+      "connect" : [
+        { "id" : "f23", "to" : "f17" }
+      ]
     }, {
       "id" : "f2",
       "type" : "RestClientCall",
@@ -265,28 +292,34 @@
         "Machines"
       ],
       "config" : {
-        "path" : "/odata/Machines",
-        "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
-        "clientErrorCode" : "ivy:error:rest:client",
-        "statusErrorCode" : "ivy:error:rest:client",
-        "resultType" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfExtendedMachineDto",
-        "responseCode" : [
-          "import com.uipath.orchestrator.MachineRobotDto;",
-          "import com.uipath.orchestrator.ExtendedMachineDto;",
-          "for (ExtendedMachineDto exMachineDto : result.value) {",
-          "  MachineRobotDto robot = new MachineRobotDto();",
-          "  robot.machineId = exMachineDto.id;",
-          "  robot.machineName = exMachineDto.name;",
-          "  in.machines.add(robot);",
-          "}",
-          "in.startInfo.machineRobots = in.machines;"
-        ]
+        "target" : {
+          "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+          "path" : "/odata/Machines"
+        },
+        "response" : {
+          "entity" : {
+            "type" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfExtendedMachineDto",
+            "code" : [
+              "import com.uipath.orchestrator.MachineRobotDto;",
+              "import com.uipath.orchestrator.ExtendedMachineDto;",
+              "for (ExtendedMachineDto exMachineDto : result.value) {",
+              "  MachineRobotDto robot = new MachineRobotDto();",
+              "  robot.machineId = exMachineDto.id;",
+              "  robot.machineName = exMachineDto.name;",
+              "  in.machines.add(robot);",
+              "}",
+              "in.startInfo.machineRobots = in.machines;"
+            ]
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 280, "y" : 680 },
         "icon" : "res:/webContent/icons/uipath.png"
       },
-      "connect" : { "id" : "f8", "to" : "f3" }
+      "connect" : [
+        { "id" : "f8", "to" : "f3" }
+      ]
     }, {
       "id" : "f3",
       "type" : "RestClientCall",
@@ -295,33 +328,41 @@
         "StartJobs"
       ],
       "config" : {
-        "path" : "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs",
-        "headers" : {
-          "Accept" : "*/*",
-          "X-Uipath-Organizationunitid" : "in.organizationunitId"
-        },
-        "bodyObjectMapping" : {
-          "param.startInfo" : "in.startInfo"
-        },
-        "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
-        "clientErrorCode" : "ivy:error:rest:client",
         "method" : "POST",
-        "statusErrorCode" : "ivy:error:rest:client",
-        "bodyObjectType" : "com.uipath.orchestrator.StartJobsRequest",
-        "resultType" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfJobDto",
-        "bodyInputType" : "ENTITY"
+        "target" : {
+          "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+          "path" : "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs",
+          "headers" : {
+            "X-Uipath-Organizationunitid" : "in.organizationunitId"
+          }
+        },
+        "body" : {
+          "entity" : {
+            "type" : "com.uipath.orchestrator.StartJobsRequest",
+            "map" : {
+              "param.startInfo" : "in.startInfo"
+            }
+          }
+        },
+        "response" : {
+          "entity" : {
+            "type" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfJobDto"
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 448, "y" : 680 },
         "icon" : "res:/webContent/icons/uipath.png"
       },
-      "connect" : { "id" : "f28", "to" : "f50" }
+      "connect" : [
+        { "id" : "f28", "to" : "f50" }
+      ]
     }, {
       "id" : "f49",
       "type" : "CallSubStart",
       "name" : "startJob(Long,String,ReleaseDto)",
       "config" : {
-        "callSignature" : "startJob",
+        "signature" : "startJob",
         "input" : {
           "params" : [
             { "name" : "orgId", "type" : "Long", "desc" : "Required field" },
@@ -346,7 +387,9 @@
         "at" : { "x" : 128, "y" : 680 },
         "icon" : "res:/webContent/icons/uipath.png?small"
       },
-      "connect" : { "id" : "f51", "to" : "f2" }
+      "connect" : [
+        { "id" : "f51", "to" : "f2" }
+      ]
     }, {
       "id" : "f50",
       "type" : "CallSubEnd",
@@ -360,11 +403,6 @@
       "config" : {
         "processCall" : "uiPathJob:startJob(Long,String,com.uipath.orchestrator.ReleaseDto)",
         "call" : {
-          "params" : [
-            { "name" : "orgId", "type" : "Long" },
-            { "name" : "argument", "type" : "String" },
-            { "name" : "release", "type" : "com.uipath.orchestrator.ReleaseDto" }
-          ],
           "map" : {
             "param.orgId" : "in.organizationunitId",
             "param.argument" : "in.jobArguments",
@@ -376,7 +414,9 @@
         "at" : { "x" : 448, "y" : 408 },
         "icon" : "res:/webContent/icons/uipath.png"
       },
-      "connect" : { "id" : "f33", "to" : "f25" }
+      "connect" : [
+        { "id" : "f33", "to" : "f25" }
+      ]
     }, {
       "id" : "f4",
       "type" : "SubProcessCall",
@@ -384,11 +424,6 @@
       "config" : {
         "processCall" : "uiPathJob:startJob(Long,String,com.uipath.orchestrator.ReleaseDto)",
         "call" : {
-          "params" : [
-            { "name" : "orgId", "type" : "Long" },
-            { "name" : "argument", "type" : "String" },
-            { "name" : "release", "type" : "com.uipath.orchestrator.ReleaseDto" }
-          ],
           "map" : {
             "param.orgId" : "in.organizationunitId",
             "param.release" : "in.releases.get(0)"
@@ -399,7 +434,9 @@
         "at" : { "x" : 448, "y" : 176 },
         "icon" : "res:/webContent/icons/uipath.png"
       },
-      "connect" : { "id" : "f19", "to" : "f15" }
+      "connect" : [
+        { "id" : "f19", "to" : "f15" }
+      ]
     }, {
       "id" : "f7",
       "type" : "Script",
@@ -412,6 +449,8 @@
       "visual" : {
         "at" : { "x" : 448, "y" : 528 }
       },
-      "connect" : { "id" : "f13", "to" : "f38" }
+      "connect" : [
+        { "id" : "f13", "to" : "f38" }
+      ]
     } ]
 }
