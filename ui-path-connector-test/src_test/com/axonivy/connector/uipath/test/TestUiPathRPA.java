@@ -25,7 +25,7 @@ import ch.ivyteam.ivy.security.ISession;
 /**
  * Service functionality is mocked out here: {@link UiPathMock}
  */
-@IvyProcessTest
+@IvyProcessTest(enableWebServer = true)
 public class TestUiPathRPA {
 
   private static final BpmElement UI_PATH_END = BpmElement.pid("175F58F3612E10B1-f15");
