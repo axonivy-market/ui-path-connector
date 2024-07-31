@@ -37,7 +37,6 @@ public class TenantHeaderFeature implements Feature
     public void filter(ClientRequestContext context) throws IOException 
     {
       context.getHeaders().add("X-UIPATH-TenantName", tenant);
-      context.getHeaders().add("X-Uipath-Organizationunitid", tenant);
     }
   }
 

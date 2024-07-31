@@ -56,6 +56,20 @@ public class UiPathMock {
 
   @GET
   @Produces(MediaType.APPLICATION_JSON)
+  @Path("odata/Folders")
+  public String getFolders() {
+    return load("json/folders.json");
+  }
+
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("odata/Machines")
+  public String getMachines() {
+    return load("json/machines.json");
+  }
+
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
   @Path("odata/Robots")
   public String getRobots() {
     return load("json/robots.json");
