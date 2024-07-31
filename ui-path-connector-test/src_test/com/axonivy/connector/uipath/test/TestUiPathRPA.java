@@ -29,14 +29,15 @@ import ch.ivyteam.ivy.security.ISession;
 public class TestUiPathRPA {
 
   private static final BpmElement UI_PATH_END = BpmElement.pid("175F58F3612E10B1-f15");
+  private static final String UI_PATH_REST_CLIENT = "UIPathRPA (UiPath.WebApi 18.0)";
 
   @BeforeEach
   void beforeEach(AppFixture fixture, IApplication app) {
-    fixture.config("RestClients.UIPathRPA.Url", UiPathMock.URI);
-    fixture.config("RestClients.UIPathRPA.Features", "");
+    fixture.config("RestClients." + UI_PATH_REST_CLIENT + ".Url", UiPathMock.URI);
+    fixture.config("RestClients." + UI_PATH_REST_CLIENT + ".Features", "");
 
     RestClients clients = RestClients.of(app);
-    RestClient uiPathRpa = clients.find("UIPathRPA");
+    RestClient uiPathRpa = clients.find(UI_PATH_REST_CLIENT);
     var testClient = uiPathRpa.toBuilder()
       .features(List.of( // exclude oauth-feature
         JsonFeature.class.getName(),
@@ -44,6 +45,9 @@ public class TestUiPathRPA {
         CsrfHeaderFeature.class.getName()))
       .property("AUTH.clientId", "notMyId")
       .property("AUTH.userKey", "notMyKey")
+      .property("AUTH.tenant", "notMyTenant")
+      .property("PATH.tenant", "tenant")
+      .property("PATH.organization", "organization")
       .toRestClient();
     clients.set(testClient);
   }

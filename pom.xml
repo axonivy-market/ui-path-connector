@@ -36,12 +36,6 @@
             <tagNameFormat>v@{project.version}</tagNameFormat>
           </configuration>
         </plugin>
-        <plugin>
-          <groupId>com.axonivy.ivy.ci</groupId>
-          <artifactId>project-build-plugin</artifactId>
-          <version>10.0.16</version>
-          <extensions>true</extensions>
-        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
