@@ -1,0 +1,38 @@
+{
+  "@odata.context": "https://cloud.uipath.com/orchestrator_/odata/$metadata#Machines/UiPath.Server.Configuration.OData.ExtendedMachineDto",
+  "@odata.count": 4,
+  "value": [
+    {
+      "@odata.type": "#UiPath.Server.Configuration.OData.ExtendedMachineDto",
+      "ServerlessLicensingModel": null,
+      "LicenseKey": null,
+      "Name": "My workspace machine",
+      "Description": null,
+      "Type": "Template",
+      "Scope": "PersonalWorkspace",
+      "NonProductionSlots": 0,
+      "UnattendedSlots": 0,
+      "HeadlessSlots": 0,
+      "TestAutomationSlots": 0,
+      "AutomationCloudSlots": 0,
+      "AutomationCloudTestAutomationSlots": 0,
+      "Key": "480f27b8-09c8-4476-b01b-db2d1bd0f5d5",
+      "EndpointDetectionStatus": "NotAvailable",
+      "AutomationType": "Any",
+      "TargetFramework": "Any",
+      "ClientSecret": null,
+      "Id": 55490,
+      "RobotVersions": [
+        {
+          "Count": 2,
+          "Version": "24.10.1"
+        }
+      ],
+      "RobotUsers": [],
+      "UpdatePolicy": null,
+      "Tags": [],
+      "MaintenanceWindow": null,
+      "VpnSettings": null
+    }
+  ]
+}
