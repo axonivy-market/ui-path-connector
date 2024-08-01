@@ -1,0 +1,22 @@
+{
+  "@odata.context": "https://platform.uipath.com/odata/$metadata#Folders",
+  "@odata.count": 1,
+  "value": [
+    {
+      "Key": "1a374a79-9bdd-4055-a0cc-95488ae006a0",
+      "DisplayName": "MyTest",
+      "FullyQualifiedName": "MyTest",
+      "FullyQualifiedNameOrderable": "MyTest",
+      "Description": null,
+      "FolderType": "Standard",
+      "ProvisionType": "Automatic",
+      "PermissionModel": "FineGrained",
+      "ParentId": null,
+      "ParentKey": null,
+      "IsActive": true,
+      "FeedType": "Processes",
+      "ReservedOptions": null,
+      "Id": 89973
+    }
+  ]
+}
