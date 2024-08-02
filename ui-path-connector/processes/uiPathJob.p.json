@@ -1,0 +1,417 @@
+{
+  "format" : "10.0.0",
+  "id" : "190E93ECBBC86C6F",
+  "kind" : "CALLABLE_SUB",
+  "config" : {
+    "data" : "com.axonivy.connector.uipath.ui.path.connector.UiPathJobData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "CallSubStart",
+      "name" : "startAllActiveJobs()",
+      "config" : {
+        "callSignature" : "startAllActiveJobs"
+      },
+      "visual" : {
+        "at" : { "x" : 128, "y" : 64 },
+        "icon" : "res:/webContent/icons/uipath.png?small"
+      },
+      "connect" : { "id" : "f21", "to" : "f12" }
+    }, {
+      "id" : "f1",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 720, "y" : 64 }
+      }
+    }, {
+      "id" : "f15",
+      "type" : "Script",
+      "name" : "Remove proceed Job",
+      "config" : {
+        "output" : {
+          "code" : "in.releases.removeAt(0);"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 608, "y" : 176 }
+      },
+      "connect" : { "id" : "f18", "to" : "f17", "via" : [ { "x" : 608, "y" : 112 } ] }
+    }, {
+      "id" : "f17",
+      "type" : "Alternative",
+      "name" : "hasRelease?",
+      "visual" : {
+        "at" : { "x" : 448, "y" : 64 },
+        "labelOffset" : { "x" : 16, "y" : -24 }
+      },
+      "connect" : [
+        { "id" : "f20", "to" : "f1", "label" : {
+            "name" : "no"
+          }, "condition" : "in.releases.isEmpty()" },
+        { "id" : "f6", "to" : "f4", "label" : {
+            "name" : "yes"
+          } }
+      ]
+    }, {
+      "id" : "f10",
+      "type" : "CallSubStart",
+      "name" : "startJobByName(String,String)",
+      "config" : {
+        "callSignature" : "startJobByName",
+        "input" : {
+          "params" : [
+            { "name" : "jobName", "type" : "String" },
+            { "name" : "jobArguments", "type" : "String" }
+          ],
+          "map" : {
+            "out.jobArguments" : "param.jobArguments",
+            "out.jobName" : "param.jobName"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 128, "y" : 288 },
+        "icon" : "res:/webContent/icons/uipath.png?small"
+      },
+      "connect" : { "id" : "f44", "to" : "f43" }
+    }, {
+      "id" : "f11",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 720, "y" : 288 }
+      }
+    }, {
+      "id" : "f25",
+      "type" : "Script",
+      "name" : "Remove proceed Job",
+      "config" : {
+        "output" : {
+          "code" : "in.releases.removeAt(0);"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 608, "y" : 408 }
+      },
+      "connect" : { "id" : "f30", "to" : "f26", "via" : [ { "x" : 608, "y" : 328 } ] }
+    }, {
+      "id" : "f26",
+      "type" : "Alternative",
+      "name" : "hasRelease?",
+      "visual" : {
+        "at" : { "x" : 448, "y" : 288 },
+        "labelOffset" : { "x" : 16, "y" : -16 }
+      },
+      "connect" : [
+        { "id" : "f35", "to" : "f11", "label" : {
+            "name" : "no"
+          }, "condition" : "in.releases.isEmpty()" },
+        { "id" : "f27", "to" : "f22", "label" : {
+            "name" : "yes"
+          } }
+      ]
+    }, {
+      "id" : "f14",
+      "type" : "CallSubStart",
+      "name" : "getReleases(String)",
+      "config" : {
+        "callSignature" : "getReleases",
+        "input" : {
+          "params" : [
+            { "name" : "name", "type" : "String", "desc" : "Optional field" }
+          ],
+          "map" : {
+            "out.jobName" : "param.name"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "releases", "type" : "java.util.List<com.uipath.orchestrator.ReleaseDto>" },
+            { "name" : "orgId", "type" : "Long" }
+          ],
+          "map" : {
+            "result.releases" : "in.releases",
+            "result.orgId" : "in.organizationunitId"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 128, "y" : 528 },
+        "icon" : "res:/webContent/icons/uipath.png?small"
+      },
+      "connect" : { "id" : "f39", "to" : "f37" }
+    }, {
+      "id" : "f37",
+      "type" : "RestClientCall",
+      "name" : [
+        "**RPA**: UI Path",
+        "Folders"
+      ],
+      "config" : {
+        "path" : "/odata/Folders",
+        "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "statusErrorCode" : "ivy:error:rest:client",
+        "resultType" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfFolderDto",
+        "responseCode" : [
+          "// Should throw exception if no organizationunitId found",
+          "out.organizationunitId = result.value.get(0).id;"
+        ]
+      },
+      "visual" : {
+        "at" : { "x" : 280, "y" : 528 },
+        "icon" : "res:/webContent/icons/uipath.png"
+      },
+      "connect" : { "id" : "f9", "to" : "f7" }
+    }, {
+      "id" : "f38",
+      "type" : "RestClientCall",
+      "name" : [
+        "**RPA**: UI Path",
+        "Releases"
+      ],
+      "config" : {
+        "path" : "/odata/Releases",
+        "headers" : {
+          "Accept" : "*/*",
+          "X-Uipath-Organizationunitid" : "in.organizationunitId"
+        },
+        "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "queryParams" : {
+          "mandatoryPermissions" : "",
+          "atLeastOnePermissions" : "",
+          "$expand" : "",
+          "$filter" : "in.#filter is initialized ? in.#filter : null",
+          "$select" : "",
+          "$orderby" : "",
+          "$top" : "",
+          "$skip" : "",
+          "$count" : ""
+        },
+        "statusErrorCode" : "ivy:error:rest:client",
+        "responseMapping" : {
+          "out.releases" : "result.value"
+        },
+        "resultType" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfReleaseDto",
+        "responseCode" : "ivy.log.warn(\"Found release {0}\", result.value.size());"
+      },
+      "visual" : {
+        "at" : { "x" : 608, "y" : 528 },
+        "icon" : "res:/webContent/icons/uipath.png"
+      },
+      "connect" : { "id" : "f42", "to" : "f41" }
+    }, {
+      "id" : "f41",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 760, "y" : 528 }
+      }
+    }, {
+      "id" : "f43",
+      "type" : "SubProcessCall",
+      "name" : "Get Releases",
+      "config" : {
+        "processCall" : "uiPathJob:getReleases(String)",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.organizationunitId" : "result.orgId",
+            "out.releases" : "result.releases"
+          }
+        },
+        "call" : {
+          "params" : [
+            { "name" : "name", "type" : "String" }
+          ],
+          "map" : {
+            "param.name" : "in.jobName"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 280, "y" : 288 },
+        "icon" : "res:/webContent/icons/uipath.png"
+      },
+      "connect" : { "id" : "f5", "to" : "f26" }
+    }, {
+      "id" : "f12",
+      "type" : "SubProcessCall",
+      "name" : "Get Releases",
+      "config" : {
+        "processCall" : "uiPathJob:getReleases(String)",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.organizationunitId" : "result.orgId",
+            "out.releases" : "result.releases"
+          }
+        },
+        "call" : {
+          "params" : [
+            { "name" : "name", "type" : "String" }
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 280, "y" : 64 },
+        "icon" : "res:/webContent/icons/uipath.png"
+      },
+      "connect" : { "id" : "f23", "to" : "f17" }
+    }, {
+      "id" : "f2",
+      "type" : "RestClientCall",
+      "name" : [
+        "**RPA**: UI Path",
+        "Machines"
+      ],
+      "config" : {
+        "path" : "/odata/Machines",
+        "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "statusErrorCode" : "ivy:error:rest:client",
+        "resultType" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfExtendedMachineDto",
+        "responseCode" : [
+          "import com.uipath.orchestrator.MachineRobotDto;",
+          "import com.uipath.orchestrator.ExtendedMachineDto;",
+          "for (ExtendedMachineDto exMachineDto : result.value) {",
+          "  MachineRobotDto robot = new MachineRobotDto();",
+          "  robot.machineId = exMachineDto.id;",
+          "  robot.machineName = exMachineDto.name;",
+          "  in.machines.add(robot);",
+          "}",
+          "in.startInfo.machineRobots = in.machines;"
+        ]
+      },
+      "visual" : {
+        "at" : { "x" : 280, "y" : 680 },
+        "icon" : "res:/webContent/icons/uipath.png"
+      },
+      "connect" : { "id" : "f8", "to" : "f3" }
+    }, {
+      "id" : "f3",
+      "type" : "RestClientCall",
+      "name" : [
+        "**RPA**: UI Path",
+        "StartJobs"
+      ],
+      "config" : {
+        "path" : "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs",
+        "headers" : {
+          "Accept" : "*/*",
+          "X-Uipath-Organizationunitid" : "in.organizationunitId"
+        },
+        "bodyObjectMapping" : {
+          "param.startInfo" : "in.startInfo"
+        },
+        "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "method" : "POST",
+        "statusErrorCode" : "ivy:error:rest:client",
+        "bodyObjectType" : "com.uipath.orchestrator.StartJobsRequest",
+        "resultType" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfJobDto",
+        "bodyInputType" : "ENTITY"
+      },
+      "visual" : {
+        "at" : { "x" : 448, "y" : 680 },
+        "icon" : "res:/webContent/icons/uipath.png"
+      },
+      "connect" : { "id" : "f28", "to" : "f50" }
+    }, {
+      "id" : "f49",
+      "type" : "CallSubStart",
+      "name" : "startJob(Long,String,ReleaseDto)",
+      "config" : {
+        "callSignature" : "startJob",
+        "input" : {
+          "params" : [
+            { "name" : "orgId", "type" : "Long", "desc" : "Required field" },
+            { "name" : "argument", "type" : "String", "desc" : "Optional field" },
+            { "name" : "release", "type" : "com.uipath.orchestrator.ReleaseDto", "desc" : "Required field" }
+          ],
+          "map" : {
+            "out.organizationunitId" : "param.orgId"
+          },
+          "code" : [
+            "import com.axonivy.connector.uipath.constant.Constant;",
+            "import org.apache.commons.lang3.StringUtils;",
+            "out.startInfo.inputArguments = StringUtils.isBlank(param.argument) ? Constant.DEFAULT_ARGUMENT : param.argument;",
+            "out.startInfo.jobsCount = 1;",
+            "out.startInfo.resumeOnSameContext = true;",
+            "out.startInfo.strategy = com.uipath.orchestrator.StartProcessDto.StrategyEnum.MODERNJOBSCOUNT;",
+            "out.startInfo.releaseKey = param.release.key;"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 128, "y" : 680 },
+        "icon" : "res:/webContent/icons/uipath.png?small"
+      },
+      "connect" : { "id" : "f51", "to" : "f2" }
+    }, {
+      "id" : "f50",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 608, "y" : 680 }
+      }
+    }, {
+      "id" : "f22",
+      "type" : "SubProcessCall",
+      "name" : "Start UIPath Job",
+      "config" : {
+        "processCall" : "uiPathJob:startJob(Long,String,com.uipath.orchestrator.ReleaseDto)",
+        "call" : {
+          "params" : [
+            { "name" : "orgId", "type" : "Long" },
+            { "name" : "argument", "type" : "String" },
+            { "name" : "release", "type" : "com.uipath.orchestrator.ReleaseDto" }
+          ],
+          "map" : {
+            "param.orgId" : "in.organizationunitId",
+            "param.argument" : "in.jobArguments",
+            "param.release" : "in.releases.get(0)"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 448, "y" : 408 },
+        "icon" : "res:/webContent/icons/uipath.png"
+      },
+      "connect" : { "id" : "f33", "to" : "f25" }
+    }, {
+      "id" : "f4",
+      "type" : "SubProcessCall",
+      "name" : "Start UIPath Job",
+      "config" : {
+        "processCall" : "uiPathJob:startJob(Long,String,com.uipath.orchestrator.ReleaseDto)",
+        "call" : {
+          "params" : [
+            { "name" : "orgId", "type" : "Long" },
+            { "name" : "argument", "type" : "String" },
+            { "name" : "release", "type" : "com.uipath.orchestrator.ReleaseDto" }
+          ],
+          "map" : {
+            "param.orgId" : "in.organizationunitId",
+            "param.release" : "in.releases.get(0)"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 448, "y" : 176 },
+        "icon" : "res:/webContent/icons/uipath.png"
+      },
+      "connect" : { "id" : "f19", "to" : "f15" }
+    }, {
+      "id" : "f7",
+      "type" : "Script",
+      "name" : "Build filter",
+      "config" : {
+        "output" : {
+          "code" : "in.filter = com.axonivy.connector.uipath.builder.FilterBuilder.newInstance().name(in.jobName).build();"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 448, "y" : 528 }
+      },
+      "connect" : { "id" : "f13", "to" : "f38" }
+    } ]
+}

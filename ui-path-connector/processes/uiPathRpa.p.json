@@ -34,7 +34,8 @@
         "description" : [
           "Simple request against RPA Orchestration Platform provided by UIPath",
           " (mainly to enforce an active OAUTH session)"
-        ]
+        ],
+        "icon" : "res:/webContent/icons/uipath.png"
       },
       "connect" : { "id" : "f6", "to" : "f5" }
     }, {
@@ -57,9 +58,10 @@
       },
       "visual" : {
         "at" : { "x" : 472, "y" : 64 },
-        "size" : { "width" : 128, "height" : 60 }
+        "size" : { "width" : 128, "height" : 60 },
+        "icon" : "res:/webContent/icons/uipath.png"
       },
-      "connect" : { "id" : "f2", "to" : "f0" }
+      "connect" : { "id" : "f1", "to" : "f37" }
     }, {
       "id" : "f0",
       "type" : "RestClientCall",
@@ -69,6 +71,10 @@
       ],
       "config" : {
         "path" : "/odata/Robots",
+        "headers" : {
+          "Accept" : "*/*",
+          "X-Uipath-Organizationunitid" : "in.organizationunitId"
+        },
         "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
         "clientErrorCode" : "ivy:error:rest:client",
         "method" : "GET",
@@ -92,8 +98,9 @@
         "responseCode" : "ivy.log.info(\"found \"+result.value.size()+\" RPA robots\");"
       },
       "visual" : {
-        "at" : { "x" : 472, "y" : 144 },
-        "size" : { "width" : 128, "height" : 60 }
+        "at" : { "x" : 472, "y" : 224 },
+        "size" : { "width" : 128, "height" : 60 },
+        "icon" : "res:/webContent/icons/uipath.png"
       },
       "connect" : { "id" : "f4", "to" : "f22" }
     }, {
@@ -130,8 +137,9 @@
         "responseCode" : "ivy.log.info(\"found \"+result.value.size()+\" Process releases\");"
       },
       "visual" : {
-        "at" : { "x" : 472, "y" : 224 },
-        "size" : { "width" : 128, "height" : 60 }
+        "at" : { "x" : 472, "y" : 304 },
+        "size" : { "width" : 128, "height" : 60 },
+        "icon" : "res:/webContent/icons/uipath.png"
       },
       "connect" : { "id" : "f8", "to" : "f24" }
     }, {
@@ -174,8 +182,9 @@
         "resultType" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfJobDto"
       },
       "visual" : {
-        "at" : { "x" : 472, "y" : 304 },
-        "size" : { "width" : 128, "height" : 60 }
+        "at" : { "x" : 472, "y" : 384 },
+        "size" : { "width" : 128, "height" : 60 },
+        "icon" : "res:/webContent/icons/uipath.png"
       },
       "connect" : { "id" : "f9", "to" : "f15" }
     }, {
@@ -213,7 +222,30 @@
       "id" : "f15",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 608, "y" : 304 }
+        "at" : { "x" : 608, "y" : 384 }
       }
+    }, {
+      "id" : "f37",
+      "type" : "RestClientCall",
+      "name" : [
+        "**RPA**: UI Path",
+        "Folders"
+      ],
+      "config" : {
+        "path" : "/odata/Folders",
+        "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "statusErrorCode" : "ivy:error:rest:client",
+        "responseMapping" : {
+          "out.organizationunitId" : "result.value.get(0).id"
+        },
+        "resultType" : "com.uipath.orchestrator.ODataValueOfIEnumerableOfFolderDto"
+      },
+      "visual" : {
+        "at" : { "x" : 472, "y" : 144 },
+        "size" : { "width" : 128, "height" : 60 },
+        "icon" : "res:/webContent/icons/uipath.png"
+      },
+      "connect" : { "id" : "f2", "to" : "f0" }
     } ]
 }

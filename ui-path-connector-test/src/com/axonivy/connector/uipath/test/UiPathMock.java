@@ -31,7 +31,7 @@ import io.swagger.v3.oas.annotations.Hidden;
 @Hidden
 public class UiPathMock {
 
-  static final String PATH_SUFFIX = "rpaMock";
+  static final String PATH_SUFFIX = "rpaMock/orchestrator_/";
   // URI where this mock can be reached: to be referenced in tests that use it!
   public static final String URI = "{ivy.app.baseurl}/api/" + PATH_SUFFIX;
 
@@ -52,6 +52,20 @@ public class UiPathMock {
     json = StringUtils.replace(json,
             "PersistenceId\": \"string\",", "PersistenceId\": \"" + UUID.randomUUID().toString() + "\",");
     return json;
+  }
+
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("odata/Folders")
+  public String getFolders() {
+    return load("json/folders.json");
+  }
+
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("odata/Machines")
+  public String getMachines() {
+    return load("json/machines.json");
   }
 
   @GET
