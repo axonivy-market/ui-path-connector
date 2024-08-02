@@ -7,8 +7,9 @@
 #
 Variables:
   uiPath-connector:
+    organization: ''
     tenant: 'AXONPRESALES'
     clientId: ''
+    # The key of service user, access to Admin > Tenant > Services > API Access > User Key
     # [password]
     userKey: ''
-    
