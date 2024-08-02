@@ -5,3 +5,4 @@ license com.uipath.orchestrator.LicenseDto #field
 jobs List<com.uipath.orchestrator.JobDto> #field
 robots List<com.uipath.orchestrator.RobotDto> #field
 releases List<com.uipath.orchestrator.ReleaseDto> #field
+organizationunitId Long #field
