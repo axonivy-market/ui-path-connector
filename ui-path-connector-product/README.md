@@ -1,8 +1,5 @@
 # UiPath Connector
-Axon Ivy’s [UiPath](https://www.uipath.com/) connector helps you to set up robots that replace manual work
-steps on legacy IT systems. Robotic Process Automation (RPA) works best when
-using a process automation platform to orchestrate end-to-end business
-processes. 
+Axon Ivy's [UiPath](https://www.uipath.com/) connector helps you to automate repetitive manual work steps in legacy IT systems and integrate them into your business processes.
 
 This connector:
 
