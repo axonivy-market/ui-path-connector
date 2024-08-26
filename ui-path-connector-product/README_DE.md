@@ -1,6 +1,6 @@
 # UiPath Konnektor
 
-Axon Ivy’s [UiPath](https://www.uipath.com/)-Konnektor hilft dir die manuelle Arbeitsschritte in alten Legacy-IT-Systemen zu automatisieren und in Deine Geschäftsprozesse zu integrieren.
+Axon Ivy’s [UiPath](https://www.uipath.com/)-Konnektor hilft dir repetetive, manuelle Arbeitsschritte in alten Legacy-IT-Systemen zu automatisieren und in Deine Geschäftsprozesse zu integrieren.
 
 Dieser Konnektor:
 
