@@ -18,6 +18,7 @@ import ch.ivyteam.ivy.bpm.engine.client.element.BpmElement;
 import ch.ivyteam.ivy.bpm.exec.client.IvyProcessTest;
 import ch.ivyteam.ivy.environment.AppFixture;
 import ch.ivyteam.ivy.rest.client.RestClient;
+import ch.ivyteam.ivy.rest.client.RestClientFeature;
 import ch.ivyteam.ivy.rest.client.RestClients;
 import ch.ivyteam.ivy.rest.client.mapper.JsonFeature;
 import ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature;
@@ -43,9 +44,9 @@ public class UiPathTest {
     RestClient uiPathRpa = clients.find(UI_PATH_REST_CLIENT);
     var testClient = uiPathRpa.toBuilder()
       .features(List.of( // exclude oauth-feature
-        JsonFeature.class.getName(),
-        TenantHeaderFeature.class.getName(),
-        CsrfHeaderFeature.class.getName()))
+        new RestClientFeature(JsonFeature.class.getName()),
+        new RestClientFeature(TenantHeaderFeature.class.getName()),
+        new RestClientFeature(CsrfHeaderFeature.class.getName())))
       .property("AUTH.clientId", "notMyId")
       .property("AUTH.userKey", "notMyKey")
       .property("AUTH.tenant", "notMyTenant")
