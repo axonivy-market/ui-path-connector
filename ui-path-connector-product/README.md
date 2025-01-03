@@ -28,7 +28,7 @@ Proceed as follows:
 1. Start any process that contains an UiPath activity interaction.
 1. If OAUTH credentials are not present, the browser will redirect you to the UiPath cloud login page.
   ![cloud-navigate](images/authErrorHandling.png)
-1. Login and navigate to: Admin > Tenant > Orchestrator > API Access
+1. Login and navigate to: Account > Preferences > Privacy & Security > View API Access
   ![cloud-access](images/cloudApiAccess.png)
 1. Copy the shown `clientId`, `userKey` and `tenant` to your Rest Client definition.
   ![copy-properties](images/copyAuth_idKeyTenant.png)
