@@ -1,9 +1,0 @@
-UiPathJobData #class
-com.axonivy.connector.uipath.ui.path.connector #namespace
-organizationunitId Long #field
-releases java.util.List<com.uipath.orchestrator.ReleaseDto> #field
-machines java.util.List<com.uipath.orchestrator.MachineRobotDto> #field
-startInfo com.uipath.orchestrator.StartProcessDto #field
-jobName String #field
-jobArguments String #field
-filter String #field
