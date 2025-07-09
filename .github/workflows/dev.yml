@@ -9,3 +9,5 @@ on:
 jobs:
   build:
     uses: axonivy-market/github-workflows/.github/workflows/dev.yml@v6
+    secrets:
+      mvnArgs: -Duipath.organization=${{secrets.ORGANIZATION}} -Duipath.tenant=${{secrets.TENANT}} -Duipath.clientId=${{secrets.CLIENT_ID}} -Duipath.userKey=${{secrets.USER_KEY}}

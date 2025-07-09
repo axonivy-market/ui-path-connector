@@ -195,8 +195,8 @@
               "param.startInfo.jobPriority" : "com.uipath.orchestrator.StartProcessDto.JobPriorityEnum.NORMAL",
               "param.startInfo.jobsCount" : "0",
               "param.startInfo.noOfRobots" : "0",
-              "param.startInfo.releaseKey" : "org.apache.commons.lang3.ObjectUtils.isNotEmpty(in.releases) ? in.releases.get(0).key : \"\"",
-              "param.startInfo.robotIds" : "org.apache.commons.lang3.ObjectUtils.isNotEmpty(in.robots) ? [in.robots.get(0).id] : []",
+              "param.startInfo.releaseKey" : "in.releases.get(0).key",
+              "param.startInfo.robotIds" : "[in.robots.get(0).id]",
               "param.startInfo.source" : "com.uipath.orchestrator.StartProcessDto.SourceEnum.MANUAL",
               "param.startInfo.strategy" : "com.uipath.orchestrator.StartProcessDto.StrategyEnum.SPECIFIC"
             },
