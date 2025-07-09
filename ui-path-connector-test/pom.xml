@@ -57,11 +57,11 @@
           <version>3.0.0-M5</version>
           <configuration>
             <systemPropertyVariables>
-               <organization>${uipath.organization}</organization>
-               <tenant>${uipath.tenant}</tenant>
-               <clientId>${uipath.clientId}</clientId>
-               <userKey>${uipath.userKey}</userKey>
-           </systemPropertyVariables>
+              <organization>${uipath.organization}</organization>
+              <tenant>${uipath.tenant}</tenant>
+              <clientId>${uipath.clientId}</clientId>
+              <userKey>${uipath.userKey}</userKey>
+            </systemPropertyVariables>
           </configuration>
         </plugin>
       </plugins>

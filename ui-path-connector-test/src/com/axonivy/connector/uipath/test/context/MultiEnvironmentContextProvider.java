@@ -19,8 +19,5 @@ public class MultiEnvironmentContextProvider implements TestTemplateInvocationCo
   public Stream<TestTemplateInvocationContext> provideTestTemplateInvocationContexts(ExtensionContext context) {
     return Stream.of(new TestEnironmentInvocationContext(UiPathConstants.REAL_CALL_CONTEXT_DISPLAY_NAME),
         new TestEnironmentInvocationContext(UiPathConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME));
-    
-//    return Stream.of(new TestEnironmentInvocationContext(UiPathConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME),
-//        new TestEnironmentInvocationContext(UiPathConstants.REAL_CALL_CONTEXT_DISPLAY_NAME));
   }
 }

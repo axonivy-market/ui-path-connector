@@ -30,7 +30,7 @@ public class UiPathUtils {
     }
   }
 
-  public static void setUpConfigForApiTest(AppFixture fixture) {
+  private static void setUpConfigForApiTest(AppFixture fixture) {
     String organization = System.getProperty(UiPathConstants.ORGANIZATION);
     String tenant = System.getProperty(UiPathConstants.TENANT);
     String clientId = System.getProperty(UiPathConstants.CLIENT_ID);
@@ -42,7 +42,7 @@ public class UiPathUtils {
     fixture.var("uiPathConnector.userKey", userKey);
   }
 
-  public static void setUpConfigForMockServer(AppFixture fixture, IApplication app) {
+  private static void setUpConfigForMockServer(AppFixture fixture, IApplication app) {
     fixture.config("RestClients." + UI_PATH_REST_CLIENT + ".Url", UiPathMock.URI);
     fixture.config("RestClients." + UI_PATH_REST_CLIENT + ".Features", "");
 
