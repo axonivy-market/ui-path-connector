@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.axonivy.connector.uipath.TenantHeaderFeature;
 import com.axonivy.connector.uipath.test.UiPathMock;
-import com.axonivy.connector.uipath.test.constants.UiPathConstants;
+import com.axonivy.connector.uipath.test.constants.UiPathTestConstants;
 
 import ch.ivyteam.ivy.application.IApplication;
 import ch.ivyteam.ivy.environment.AppFixture;
@@ -14,15 +14,15 @@ import ch.ivyteam.ivy.rest.client.RestClients;
 import ch.ivyteam.ivy.rest.client.mapper.JsonFeature;
 import ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature;
 
-public class UiPathUtils {
+public class UiPathTestUtils {
   private static final String UI_PATH_REST_CLIENT = "UIPathRPA (UiPath.WebApi 18.0)";
 
   public static void setUpConfigForContext(String contextName, AppFixture fixture, IApplication app) {
     switch (contextName) {
-      case UiPathConstants.REAL_CALL_CONTEXT_DISPLAY_NAME:
+      case UiPathTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME:
         setUpConfigForApiTest(fixture);
         break;
-      case UiPathConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME:
+      case UiPathTestConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME:
         setUpConfigForMockServer(fixture, app);
         break;
       default:
@@ -31,10 +31,10 @@ public class UiPathUtils {
   }
 
   private static void setUpConfigForApiTest(AppFixture fixture) {
-    String organization = System.getProperty(UiPathConstants.ORGANIZATION);
-    String tenant = System.getProperty(UiPathConstants.TENANT);
-    String clientId = System.getProperty(UiPathConstants.CLIENT_ID);
-    String userKey = System.getProperty(UiPathConstants.USER_KEY);
+    String organization = System.getProperty(UiPathTestConstants.ORGANIZATION);
+    String tenant = System.getProperty(UiPathTestConstants.TENANT);
+    String clientId = System.getProperty(UiPathTestConstants.CLIENT_ID);
+    String userKey = System.getProperty(UiPathTestConstants.USER_KEY);
 
     fixture.var("uiPathConnector.organization", organization);
     fixture.var("uiPathConnector.tenant", tenant);

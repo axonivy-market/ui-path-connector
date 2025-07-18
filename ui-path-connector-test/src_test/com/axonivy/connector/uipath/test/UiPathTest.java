@@ -7,8 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ExtensionContext;
-import com.axonivy.connector.uipath.test.Utils.UiPathUtils;
-import com.axonivy.connector.uipath.test.constants.UiPathConstants;
+import com.axonivy.connector.uipath.test.Utils.UiPathTestUtils;
+import com.axonivy.connector.uipath.test.constants.UiPathTestConstants;
 import com.axonivy.connector.uipath.test.context.MultiEnvironmentContextProvider;
 import com.axonivy.connector.uipath.ui.path.connector.UiPathJobData;
 import com.axonivy.connector.uipath.ui.path.connector.UiPathRpa;
@@ -36,7 +36,7 @@ public class UiPathTest {
 
   @BeforeEach
   void beforeEach(ExtensionContext context, AppFixture fixture, IApplication app) {
-    UiPathUtils.setUpConfigForContext(context.getDisplayName(), fixture, app);
+    UiPathTestUtils.setUpConfigForContext(context.getDisplayName(), fixture, app);
   }
 
   @AfterEach
@@ -48,7 +48,7 @@ public class UiPathTest {
   @TestTemplate
   public void rpaDemo(ExtensionContext context, BpmClient bpmClient, ISession session) {
     ExecutionResult result = bpmClient.start().process("uiPathDemo/robotGetOrders.ivp").as().session(session).execute();
-    if (context.getDisplayName().equals(UiPathConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME)) {
+    if (context.getDisplayName().equals(UiPathTestConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME)) {
       UiPathRpa data = result.data().lastOnElement(UI_PATH_RPA_END);
       assertThat(data.getLicense()).isNotNull();
       assertThat(data.getReleases()).isNotEmpty();
@@ -67,7 +67,7 @@ public class UiPathTest {
         bpmClient.start().process("uiPathDemo/triggerAllActiveJobs.ivp").as().session(session).execute();
     UiPathJobData data = result.data().lastOnElement(UI_PATH_JOB_ALL_ACTIVE_JOBS_END);
     assertThat(data.getOrganizationunitId()).isNotNull();
-    if (context.getDisplayName().equals(UiPathConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME)) {
+    if (context.getDisplayName().equals(UiPathTestConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME)) {
       data = result.data().lastOnElement(UI_PATH_JOB_START_JOB_END);
       assertThat(data.getMachines()).isNotEmpty();
       assertThat(data.getStartInfo()).isNotNull();
