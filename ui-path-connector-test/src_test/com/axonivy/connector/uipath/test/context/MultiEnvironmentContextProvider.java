@@ -17,7 +17,12 @@ public class MultiEnvironmentContextProvider implements TestTemplateInvocationCo
 
   @Override
   public Stream<TestTemplateInvocationContext> provideTestTemplateInvocationContexts(ExtensionContext context) {
-    return Stream.of(new TestEnironmentInvocationContext(UiPathTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME),
-        new TestEnironmentInvocationContext(UiPathTestConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME));
+    String testEnv = System.getProperty(OpenWeatherCommonConstants.END_TO_END_TESTING_ENVIRONMENT_KEY);
+    return switch (testEnv) {
+    case OpenWeatherCommonConstants.END_TO_END_TESTING_ENVIRONMENT_VALUE ->
+      Stream.of(new TestEnironmentInvocationContext(OpenWeatherCommonConstants.REAL_CALL_CONTEXT_DISPLAY_NAME));
+    default ->
+      Stream.of(new TestEnironmentInvocationContext(OpenWeatherCommonConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME));
+    };
   }
 }

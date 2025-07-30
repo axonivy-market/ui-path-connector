@@ -7,4 +7,6 @@ public class UiPathTestConstants {
   public static final String TENANT = "tenant";
   public static final String CLIENT_ID = "clientId";
   public static final String USER_KEY = "userKey";
+  public static final String END_TO_END_TESTING_ENVIRONMENT_KEY = "testEnvironment";
+  public static final String END_TO_END_TESTING_ENVIRONMENT_VALUE = "E2E";
 }
