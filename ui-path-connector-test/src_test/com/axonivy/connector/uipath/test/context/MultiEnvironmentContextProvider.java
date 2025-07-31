@@ -20,9 +20,9 @@ public class MultiEnvironmentContextProvider implements TestTemplateInvocationCo
     String testEnv = System.getProperty(UiPathTestConstants.END_TO_END_TESTING_ENVIRONMENT_KEY);
     return switch (testEnv) {
     case UiPathTestConstants.END_TO_END_TESTING_ENVIRONMENT_VALUE ->
-      Stream.of(new TestEnironmentInvocationContext(UiPathTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME));
+      Stream.of(new TestEnvironmentInvocationContext(UiPathTestConstants.REAL_CALL_CONTEXT_DISPLAY_NAME));
     default ->
-      Stream.of(new TestEnironmentInvocationContext(UiPathTestConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME));
+      Stream.of(new TestEnvironmentInvocationContext(UiPathTestConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME));
     };
   }
 }
