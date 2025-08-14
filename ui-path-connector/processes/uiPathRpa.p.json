@@ -42,6 +42,24 @@
         ],
         "icon" : "res:/webContent/icons/uipath.png"
       },
+      "boundaries" : [ {
+          "id" : "f38",
+          "type" : "ErrorBoundaryEvent",
+          "config" : {
+            "output" : {
+              "map" : {
+                "out" : "in",
+                "out.error" : "error"
+              }
+            }
+          },
+          "visual" : {
+            "at" : { "x" : 296, "y" : 104 }
+          },
+          "connect" : [
+            { "id" : "f39", "to" : "f15", "via" : [ { "x" : 296, "y" : 432 }, { "x" : 608, "y" : 432 } ] }
+          ]
+        } ],
       "connect" : [
         { "id" : "f6", "to" : "f37" }
       ]
