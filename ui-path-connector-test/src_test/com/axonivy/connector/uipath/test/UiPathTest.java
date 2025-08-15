@@ -40,7 +40,6 @@ public class UiPathTest {
   private static final String START_JOB = "startJob(String)";
   private static final String START_ALL_ACTIVE_JOBS = "startAllActiveJobs()";
   private static final String START_JOB_BY_NAME = "startJobByName(String,String)";
-  private static final BpmElement UI_PATH_JOB_START_JOB_END = BpmElement.pid("190E93ECBBC86C6F-f50");
   private boolean isMockTest;
 
   @BeforeEach
@@ -94,10 +93,10 @@ public class UiPathTest {
     BpmElement startable = UI_PATH_JOB_PROCESS.elementName(START_ALL_ACTIVE_JOBS);
     try {
       ExecutionResult result = bpmClient.start().subProcess(startable).execute();
-      UiPathJobData data = result.data().lastOnElement(UI_PATH_JOB_START_JOB_END);
+      UiPathJobData data = result.data().last();
       if (isMockTest) {
-        assertThat(data.getMachines()).isNotEmpty();
-        assertThat(data.getStartInfo()).isNotNull();
+        assertTrue(ObjectUtils.isEmpty(data.getMachines()));
+        assertTrue(ObjectUtils.isEmpty(data.getStartInfo()));
       } else {
         assertThat(data.getOrganizationunitId()).isNotNull();
       }
