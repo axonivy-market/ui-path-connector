@@ -26,7 +26,6 @@ import ch.ivyteam.ivy.bpm.error.BpmError;
 import ch.ivyteam.ivy.bpm.exec.client.IvyProcessTest;
 import ch.ivyteam.ivy.environment.AppFixture;
 import ch.ivyteam.ivy.rest.client.RestClients;
-import ch.ivyteam.ivy.security.ISession;
 
 /**
  * Service functionality is mocked out here: {@link UiPathMock}
@@ -51,13 +50,13 @@ public class UiPathTest {
   }
 
   @AfterEach
-  void afterEach(AppFixture fixture, IApplication app) {
+  void afterEach(IApplication app) {
     RestClients clients = RestClients.of(app);
     clients.remove("UIPathRPA (UiPath.WebApi 18.0)");
   }
 
   @TestTemplate
-  public void rpaDemo(ExtensionContext context, BpmClient bpmClient, ISession session) {
+  public void rpaDemo(BpmClient bpmClient) {
     BpmElement startable = UI_PATH_RPA_PROCESS.elementName(START_JOB);
     try {
       ExecutionResult result = bpmClient.start().subProcess(startable).withParam("job", "getOrders").execute();
@@ -67,14 +66,14 @@ public class UiPathTest {
         assertThat(data.getReleases()).isNotEmpty();
         assertThat(data.getRobots()).isNotEmpty();
       }
-       assertThat(data.getOrganizationunitId()).isNotNull();
+      assertThat(data.getOrganizationunitId()).isNotNull();
     } catch (BpmError e) {
       assertEquals(HttpStatus.SC_UNAUTHORIZED, e.getAttribute(REST_CLIENT_RESPONSE_STATUS_CODE));
     }
   }
 
   @TestTemplate
-  public void startJobByNameDemo(BpmClient bpmClient, ISession session, ExtensionContext context) {
+  public void startJobByNameDemo(BpmClient bpmClient) {
     BpmElement startable = UI_PATH_JOB_PROCESS.elementName(START_JOB_BY_NAME);
     try {
       ExecutionResult result = bpmClient.start().subProcess(startable).execute("jobNameTest", "jobArgumentsTest");
@@ -91,7 +90,7 @@ public class UiPathTest {
   }
 
   @TestTemplate
-  public void startActiveJobsDemo(BpmClient bpmClient, ISession session, ExtensionContext context) {
+  public void startActiveJobsDemo(BpmClient bpmClient) {
     BpmElement startable = UI_PATH_JOB_PROCESS.elementName(START_ALL_ACTIVE_JOBS);
     try {
       ExecutionResult result = bpmClient.start().subProcess(startable).execute();
