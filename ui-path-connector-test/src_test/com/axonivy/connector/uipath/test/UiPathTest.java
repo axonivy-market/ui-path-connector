@@ -6,34 +6,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.http.HttpStatus;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestTemplate;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.extension.ExtensionContext;
-import com.axonivy.connector.uipath.test.Utils.UiPathTestUtils;
-import com.axonivy.connector.uipath.test.constants.UiPathTestConstants;
-import com.axonivy.connector.uipath.test.context.MultiEnvironmentContextProvider;
 import com.axonivy.connector.uipath.ui.path.connector.UiPathJobData;
 import com.axonivy.connector.uipath.ui.path.connector.UiPathRpa;
 
-import ch.ivyteam.ivy.application.IApplication;
 import ch.ivyteam.ivy.bpm.engine.client.BpmClient;
 import ch.ivyteam.ivy.bpm.engine.client.ExecutionResult;
 import ch.ivyteam.ivy.bpm.engine.client.element.BpmElement;
 import ch.ivyteam.ivy.bpm.engine.client.element.BpmProcess;
 import ch.ivyteam.ivy.bpm.error.BpmError;
-import ch.ivyteam.ivy.bpm.exec.client.IvyProcessTest;
-import ch.ivyteam.ivy.environment.AppFixture;
-import ch.ivyteam.ivy.rest.client.RestClients;
 
 /**
  * Service functionality is mocked out here: {@link UiPathMock}
  */
-@IvyProcessTest(enableWebServer = true)
-@ExtendWith(MultiEnvironmentContextProvider.class)
-public class UiPathTest {
-
+public class UiPathTest extends BaseSetup {
   private static final BpmProcess UI_PATH_RPA_PROCESS = BpmProcess.path("uiPathRpa");
   private static final BpmProcess UI_PATH_JOB_PROCESS = BpmProcess.path("uiPathJob");
   private static final String REST_CLIENT_RESPONSE_STATUS_CODE = "RestClientResponseStatusCode";
@@ -41,19 +27,6 @@ public class UiPathTest {
   private static final String START_ALL_ACTIVE_JOBS = "startAllActiveJobs()";
   private static final String START_JOB_BY_NAME = "startJobByName(String,String)";
   private static final BpmElement UI_PATH_JOB_START_JOB_END = BpmElement.pid("190E93ECBBC86C6F-f50");
-  private boolean isMockTest;
-
-  @BeforeEach
-  void beforeEach(ExtensionContext context, AppFixture fixture, IApplication app) {
-    UiPathTestUtils.setUpConfigForContext(context.getDisplayName(), fixture, app);
-    isMockTest = context.getDisplayName().equals(UiPathTestConstants.MOCK_SERVER_CONTEXT_DISPLAY_NAME);
-  }
-
-  @AfterEach
-  void afterEach(IApplication app) {
-    RestClients clients = RestClients.of(app);
-    clients.remove("UIPathRPA (UiPath.WebApi 18.0)");
-  }
 
   @TestTemplate
   public void rpaDemo(BpmClient bpmClient) {
