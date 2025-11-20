@@ -1,53 +1,56 @@
-# UiPath Anschluss
-#Axon Efeus [UiPath](https://www.uipath.com/) Anschluss hilft du zu
-automatisieren monotone Handbuch Arbeit tritt ein Erben IT Systeme und
-integrieren jene hinein eure dienstlichen Arbeitsgänge.
+# UiPath-Konnektor
+Der [UiPath](https://www.uipath.com/)-Konnektor von Axon Ivy hilft Ihnen dabei,
+sich wiederholende manuelle Arbeitsschritte in älteren IT-Systemen zu
+automatisieren und in Ihre Geschäftsprozesse zu integrieren.
 
-Dieser Anschluss:
+Dieser Konnektor:
 
-- Aktiviert du zu #zusteuern #roboterhaft Arbeit von eure workflow Arbeitsgang.
-- Macht das UiPath RPA API Charakterzüge leicht und charmant zu benutzen in
-  dienstlich Arbeitsgänge.
+- ermöglicht es Ihnen, Roboterarbeiten aus Ihrem Arbeitsablaufprozess zu
+  steuern.
+- macht die Funktionen der UiPath RPA-API einfach und attraktiv für den Einsatz
+  in Geschäftsprozessen.
 
 ## Demo
 
-Mit diesem Anschluss ein Demo Arbeitsgang will sein installiert zu demonstrieren
-prominente Nutzung Fälle für UiPath orchestrator Interaktionen. #Z.B.,
-'startAJobs auf einem unbehandelten Roboter.
+Mit diesem Konnektor wird ein Demo-Prozess installiert, um wichtige
+Anwendungsfälle für UiPath Orchestrator-Interaktionen zu demonstrieren. Z. B.
+„startAJob” auf einem unbeaufsichtigten Roboter.
 
-![Kopie-#Besitz](images/startJobSample.png)
+![copy-properties](images/startJobSample.png)
 
 ## Einrichtung
 
-Sicherheit Angelegenheiten! #Daten Strömungen zwischen die UiPath Orchestrator
-und der #Axon Efeu Motor ist #kodieren und geschützt mal OAUTH Zugang
-Automatenmünzen.
+Sicherheit ist wichtig! Der Datenfluss zwischen dem UiPath Orchestrator und der
+Axon Ivy Engine ist verschlüsselt und durch OAUTH-Zugriffstoken geschützt.
 
-Indes, die Systeme müssen sein hereingebracht zu #jede #andere. Der #Axon Efeu
-Motor Notwendigkeiten ein gültiges clientId und userKey jener #dürfen koppelt zu
-UiPath da Ersatz für eure Nutzer Konto.
+Die Systeme müssen jedoch miteinander verbunden werden. Die Axon Ivy Engine
+benötigt eine gültige clientId und userKey, die als Ersatz für Ihr Benutzerkonto
+eine Verbindung zu UiPath herstellen dürfen.
 
-Verfahr folgendermaßen:
-1. Starte irgendwelchen Arbeitsgang jener zügelt einen UiPath Aktivität
-   Interaktion.
-1. Ob OAUTH #Berechtigungsnachweis sind nicht überreichen, der Browser wollen
-   umleiten du zu der UiPath Wolke Anmeldung Seite.
-   ![Wolke-befahren](images/authErrorHandling.png)
-1. Anmeldung und befahren zu: Konto > Präferenzen > Privatsphäre & Sicherheit >
-   Ausblick API Zugang ![Wolke-greif zu](images/cloudApiAccess.png)
-1. Kopier das gezeigt `clientId`, `userKey` und `Mieter` zu euren Rest Kunden
-   Definition. ![Kopie-#Besitz](images/copyAuth_idKeyTenant.png)
-1. Starte nochmal den Arbeitsgang. Jetzt das AccessToken wollen sein gesandt
-   automatisch #innerhalb UiPath Bitten.
+Gehen Sie wie folgt vor:
+1. Starten Sie einen beliebigen Prozess, der eine UiPath-Aktivitätsinteraktion
+   enthält.
+1. Wenn keine OAUTH-Anmeldedaten vorhanden sind, leitet der Browser Sie zur
+   Anmeldeseite der UiPath-Cloud weiter.
+   ![cloud-navigate](images/authErrorHandling.png)
+1. Melden Sie sich an und navigieren Sie zu: Konto > Einstellungen > Datenschutz
+   & Sicherheit > API-Zugriff anzeigen
+   ![cloud-access](images/cloudApiAccess.png)
+1. Kopieren Sie die angezeigten `clientId`, `userKey` und `tenant` in Ihre Rest
+   Client-Definition. ![copy-properties](images/copyAuth_idKeyTenant.png)
+1. Starten Sie den Vorgang erneut. Nun wird der AccessToken automatisch
+   innerhalb der UiPath-Anfragen gesendet.
 
-### Grenzenlos
+### Unbegrenzt
 
-Wobei das schloss ein Demos Fokus auf prominent Nutzung Fälle, seid bewusst dass
-unser REST Kunde Aktivitäten können das volles benutzen geboten APIs jener ist
-versehen mal UiPath. Eigentlich, es jede kann sein getan herein #blöken-Code
-Art. Gerade auswählen irgendwelche Bedienung Methode zu rufen und benutzen die
-intuitive Vermessung Tische zu definieren eure #Daten Strömungen.
+Obwohl sich die enthaltenen Demos auf prominente Anwendungsfälle konzentrieren,
+sollten Sie beachten, dass unsere REST-Client-Aktivitäten die von UiPath
+bereitgestellten APIs mit vollem Funktionsumfang nutzen können. Tatsächlich kann
+alles mit geringem Programmieraufwand erledigt werden. Wählen Sie einfach eine
+beliebige Servicemethode zum Aufrufen aus und verwenden Sie die intuitiven
+Zuordnungstabellen, um Ihre Datenflüsse zu definieren.
 
-Benutz den REST Kunden API Browser zu bekommen weiter einen ersten Umriss den
-UiPath orchestrator Fähigkeiten.. ![api-Browser](images/apiBrowserUiPath.png)
+Verwenden Sie den REST Client API-Browser, um sich einen ersten Überblick über
+die Funktionen des UiPath Orchestrators zu verschaffen.
+![api-browser](images/apiBrowserUiPath.png)
 
