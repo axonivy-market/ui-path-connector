@@ -18,7 +18,7 @@ Anwendungsfälle für UiPath Orchestrator-Interaktionen zu demonstrieren. Z. B.
 
 ![copy-properties](images/startJobSample.png)
 
-## Einrichtung
+## Setup
 
 Sicherheit ist wichtig! Der Datenfluss zwischen dem UiPath Orchestrator und der
 Axon Ivy Engine ist verschlüsselt und durch OAUTH-Zugriffstoken geschützt.
