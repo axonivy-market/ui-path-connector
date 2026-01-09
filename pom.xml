@@ -3,18 +3,18 @@
   <groupId>com.axonivy.connector.uipath</groupId>
   <name>ui-path-connector</name>
   <artifactId>ui-path-connector-modules</artifactId>
-  <version>12.0.1-SNAPSHOT</version>
+  <version>13.1.2-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
-    <module>${project.name}</module>
-    <module>${project.name}-demo</module>
-    <module>${project.name}-test</module>
-    <module>${project.name}-product</module>
+    <module>ui-path-connector</module>
+    <module>ui-path-connector-demo</module>
+    <module>ui-path-connector-test</module>
+    <module>ui-path-connector-product</module>
   </modules>
 
   <scm>
-    <developerConnection>scm:git:https://github.com/axonivy-market/${project.name}.git</developerConnection>
+    <developerConnection>scm:git:https://github.com/axonivy-market/ui-path-connector.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 

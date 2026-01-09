@@ -1,0 +1,16 @@
+name: E2E-Build
+
+on:
+  schedule:
+    - cron:  '0 1 * * 1'
+  workflow_dispatch:
+  
+permissions:
+  contents: read
+  checks: write
+
+jobs:
+  build:
+    uses: axonivy-market/github-workflows/.github/workflows/ci.yml@v6
+    secrets:
+      mvnArgs: -Duipath.organization=${{secrets.ORGANIZATION}} -Duipath.tenant=${{secrets.TENANT}} -Duipath.clientId=${{secrets.CLIENT_ID}} -Duipath.userKey=${{secrets.USER_KEY}} -DtestEnvironment=E2E
