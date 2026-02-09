@@ -71,26 +71,6 @@
             <skip>true</skip>
           </configuration>
         </plugin>
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <configuration>
-            <systemPropertyVariables>
-              <organization>${uipath.organization}</organization>
-              <tenant>${uipath.tenant}</tenant>
-              <clientId>${uipath.clientId}</clientId>
-              <userKey>${uipath.userKey}</userKey>
-              <testEnvironment>${testEnvironment}</testEnvironment>
-            </systemPropertyVariables>
-            <statelessTestsetReporter
-              implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
-              <disable>false</disable>
-              <usePhrasedFileName>false</usePhrasedFileName>
-              <usePhrasedTestSuiteClassName>true</usePhrasedTestSuiteClassName>
-              <usePhrasedTestCaseClassName>true</usePhrasedTestCaseClassName>
-              <usePhrasedTestCaseMethodName>true</usePhrasedTestCaseMethodName>
-            </statelessTestsetReporter>
-          </configuration>
-        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
