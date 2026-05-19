@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.1.2/process.json",
+  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
   "id" : "190E93ECBBC86C6F",
   "kind" : "CALLABLE_SUB",
   "config" : {
@@ -14,7 +14,7 @@
       },
       "visual" : {
         "at" : { "x" : 128, "y" : 64 },
-        "icon" : "res:/webContent/icons/uipath.png?small"
+        "icon" : "res:/webContent/icons/uipath.png"
       },
       "connect" : [
         { "id" : "f21", "to" : "f12" }
@@ -80,7 +80,7 @@
       },
       "visual" : {
         "at" : { "x" : 128, "y" : 288 },
-        "icon" : "res:/webContent/icons/uipath.png?small"
+        "icon" : "res:/webContent/icons/uipath.png"
       },
       "connect" : [
         { "id" : "f44", "to" : "f43" }
@@ -154,7 +154,7 @@
       },
       "visual" : {
         "at" : { "x" : 128, "y" : 528 },
-        "icon" : "res:/webContent/icons/uipath.png?small"
+        "icon" : "res:/webContent/icons/uipath.png"
       },
       "connect" : [
         { "id" : "f39", "to" : "f37" }
@@ -385,7 +385,7 @@
       },
       "visual" : {
         "at" : { "x" : 128, "y" : 680 },
-        "icon" : "res:/webContent/icons/uipath.png?small"
+        "icon" : "res:/webContent/icons/uipath.png"
       },
       "connect" : [
         { "id" : "f51", "to" : "f2" }
