@@ -1,13 +1,14 @@
+# yaml-language-server: $schema=https://json-schema.axonivy.com/14.0-dev/config/rest-clients-1.json
 RestClients:
   #Orchestrator API
-  UIPathRPA (UiPath.WebApi 18.0):
-    UUID: c700c640-4f76-4cbe-8724-dbc663d8bc0a
+  UIPathRPA-UiPathWebApi-180:
+    Name: UIPathRPA (UiPath.WebApi 18.0)
     Url: https://cloud.uipath.com/{organization}/{tenant}/orchestrator_/
     Icon: res:/webContent/icons/uipath.png
     Features:
-    - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
-    - com.axonivy.connector.uipath.OAuth2Feature
-    - com.axonivy.connector.uipath.TenantHeaderFeature
+      - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+      - com.axonivy.connector.uipath.OAuth2Feature
+      - com.axonivy.connector.uipath.TenantHeaderFeature
     Properties:
       AUTH.tenant: ${ivy.var.uiPathConnector.tenant}
       AUTH.clientId: ${ivy.var.uiPathConnector.clientId}
@@ -20,3 +21,4 @@ RestClients:
     OpenAPI:
       SpecUrl: https://cloud.uipath.com/AXONPRESALES/AXONPRESALES/swagger/v18.0/swagger.json
       Namespace: com.uipath.orchestrator
+    LegacyUUID: c700c640-4f76-4cbe-8724-dbc663d8bc0a
