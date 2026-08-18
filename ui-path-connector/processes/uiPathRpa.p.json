@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
   "id" : "175F58F3612E10B1",
   "kind" : "CALLABLE_SUB",
   "description" : "Starts UI Path RPA jobs.",
@@ -15,7 +15,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+          "clientId" : "UIPathRPA-UiPathWebApi-180",
           "path" : "/odata/Settings/UiPath.Server.Configuration.OData.GetLicense"
         },
         "response" : {
@@ -54,7 +54,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+          "clientId" : "UIPathRPA-UiPathWebApi-180",
           "path" : "/odata/Jobs",
           "headers" : {
             "X-Uipath-Organizationunitid" : "in.organizationunitId"
@@ -87,7 +87,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+          "clientId" : "UIPathRPA-UiPathWebApi-180",
           "path" : "/odata/Robots",
           "queryParams" : {
             "$filter" : "\"Type eq 'UNATTENDED'\""
@@ -144,7 +144,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+          "clientId" : "UIPathRPA-UiPathWebApi-180",
           "path" : "/odata/Releases",
           "queryParams" : {
             "$filter" : "\"contains(ProcessKey, 'order')\""
@@ -181,7 +181,7 @@
       "config" : {
         "method" : "POST",
         "target" : {
-          "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+          "clientId" : "UIPathRPA-UiPathWebApi-180",
           "path" : "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs",
           "headers" : {
             "X-Uipath-Organizationunitid" : "in.organizationunitId"
@@ -278,7 +278,7 @@
       ],
       "config" : {
         "target" : {
-          "clientId" : "c700c640-4f76-4cbe-8724-dbc663d8bc0a",
+          "clientId" : "UIPathRPA-UiPathWebApi-180",
           "path" : "/odata/Folders"
         },
         "response" : {
