@@ -25,7 +25,7 @@ import java.util.List;
  * ODataValueOfIEnumerableOfPersonalWorkspaceDto
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
 public class ODataValueOfIEnumerableOfPersonalWorkspaceDto {
   @JsonProperty("value")
   private List<PersonalWorkspaceDto> value = null;

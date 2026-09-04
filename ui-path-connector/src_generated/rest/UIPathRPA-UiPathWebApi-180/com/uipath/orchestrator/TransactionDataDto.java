@@ -26,7 +26,7 @@ import java.util.UUID;
 /**
  * Stores data sent when processing of an existing or a new item starts.
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
 public class TransactionDataDto {
   @JsonProperty("Name")
   private String name = null;

@@ -23,7 +23,7 @@ import java.time.OffsetDateTime;
  * AppTasksMetadataDto
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
 public class AppTasksMetadataDto {
   @JsonProperty("appId")
   private String appId = null;

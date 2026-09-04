@@ -22,7 +22,7 @@ import java.time.OffsetDateTime;
 /**
  * This class defines DTO for Tasks Collection for webhook event Task.Completed
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
 public class WebhookTaskCompletedDto {
   @JsonProperty("Title")
   private String title = null;

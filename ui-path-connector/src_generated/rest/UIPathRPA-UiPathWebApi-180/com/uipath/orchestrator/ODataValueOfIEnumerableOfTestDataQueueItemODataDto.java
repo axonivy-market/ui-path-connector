@@ -25,7 +25,7 @@ import java.util.List;
  * ODataValueOfIEnumerableOfTestDataQueueItemODataDto
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
 public class ODataValueOfIEnumerableOfTestDataQueueItemODataDto {
   @JsonProperty("value")
   private List<TestDataQueueItemODataDto> value = null;
