@@ -107,7 +107,7 @@
         },
         "code" : [
           "import com.uipath.orchestrator.RobotDto;",
-          "import javax.ws.rs.core.GenericEntity;",
+          "import jakarta.ws.rs.core.GenericEntity;",
           "",
           "List<String> filters;",
           "filters.add(\"Type eq 'Unattended'\");",
