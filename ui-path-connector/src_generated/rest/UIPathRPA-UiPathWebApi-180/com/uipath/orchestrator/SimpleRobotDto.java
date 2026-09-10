@@ -27,7 +27,7 @@ import java.util.Map;
 /**
  * Entity derived from RobotDto. Is shares all the properties of the base entity except the navigation properties.
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
 public class SimpleRobotDto {
   @JsonProperty("LicenseKey")
   private String licenseKey = null;

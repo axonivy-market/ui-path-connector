@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * DefaultCredentialStoreDto
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
 public class DefaultCredentialStoreDto {
   /**
    * This enum describes the type of resources that can be stored in the Credential Store. When  a new resource type is added, the default needs to be initialized in 3 places:  1. Existing tenants: At migration time.  2. Default tenant: At seed time in DefaultTenantCreator.cs.  3. New tenants: In TenantService.cs.

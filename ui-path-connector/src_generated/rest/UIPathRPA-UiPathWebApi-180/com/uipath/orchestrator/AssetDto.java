@@ -29,7 +29,7 @@ import java.util.UUID;
 /**
  * Stores specific data so that robots can easily have access to it.
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
 public class AssetDto {
   @JsonProperty("Key")
   private UUID key = null;

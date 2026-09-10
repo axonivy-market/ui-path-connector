@@ -22,7 +22,7 @@ import java.time.OffsetDateTime;
 /**
  * Stores data about a version of the various versions of the process associated with a certain release.  &lt;para /&gt;If a certain version is associated on and off with a release a new ReleaseVersion object is created for each association.
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
 public class ReleaseVersionDto {
   @JsonProperty("ReleaseId")
   private Long releaseId = null;

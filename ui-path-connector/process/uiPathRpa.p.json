@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process-2.json",
   "id" : "175F58F3612E10B1",
   "kind" : "CALLABLE_SUB",
   "description" : "Starts UI Path RPA jobs.",
@@ -107,7 +107,7 @@
         },
         "code" : [
           "import com.uipath.orchestrator.RobotDto;",
-          "import javax.ws.rs.core.GenericEntity;",
+          "import jakarta.ws.rs.core.GenericEntity;",
           "",
           "List<String> filters;",
           "filters.add(\"Type eq 'Unattended'\");",

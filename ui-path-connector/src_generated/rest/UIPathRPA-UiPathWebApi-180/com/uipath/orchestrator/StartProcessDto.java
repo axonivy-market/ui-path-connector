@@ -25,7 +25,7 @@ import java.util.UUID;
 /**
  * The Start Process transfers information from client to the server during JobsController.StartJobs custom action.
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
+@jakarta.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2024-07-24T09:07:18.266604900+07:00[Asia/Bangkok]")
 public class StartProcessDto {
   @JsonProperty("ReleaseKey")
   private String releaseKey = null;
