@@ -11,15 +11,11 @@ import com.axonivy.connector.uipath.TenantHeaderFeature;
 import com.axonivy.connector.uipath.ui.path.connector.UiPathJobData;
 import com.axonivy.connector.uipath.ui.path.connector.UiPathRpa;
 
-import ch.ivyteam.ivy.application.IApplication;
 import ch.ivyteam.ivy.bpm.engine.client.BpmClient;
 import ch.ivyteam.ivy.bpm.engine.client.ExecutionResult;
 import ch.ivyteam.ivy.bpm.engine.client.element.BpmElement;
 import ch.ivyteam.ivy.bpm.exec.client.IvyProcessTest;
 import ch.ivyteam.ivy.environment.AppFixture;
-import ch.ivyteam.ivy.rest.client.RestClient;
-import ch.ivyteam.ivy.rest.client.RestClientFeature;
-import ch.ivyteam.ivy.rest.client.RestClients;
 import ch.ivyteam.ivy.rest.client.mapper.JsonFeature;
 import ch.ivyteam.ivy.rest.client.security.CsrfHeaderFeature;
 import ch.ivyteam.ivy.security.ISession;
@@ -36,24 +32,17 @@ public class UiPathTest {
   private static final BpmElement UI_PATH_RPA_END = BpmElement.pid("175F58F3612E10B1-f15");
 
   @BeforeAll
-  static void beforeAll(AppFixture fixture, IApplication app) {
+  static void beforeAll(AppFixture fixture) {
     fixture.config("RestClients." + UI_PATH_REST_CLIENT + ".Url", UiPathMock.URI);
-    fixture.config("RestClients." + UI_PATH_REST_CLIENT + ".Features", "");
-
-    RestClients clients = RestClients.of(app);
-    RestClient uiPathRpa = clients.find(UI_PATH_REST_CLIENT);
-    var testClient = uiPathRpa.toBuilder()
-      .features(List.of( // exclude oauth-feature
-        new RestClientFeature(JsonFeature.class.getName()),
-        new RestClientFeature(TenantHeaderFeature.class.getName()),
-        new RestClientFeature(CsrfHeaderFeature.class.getName())))
-      .property("AUTH.clientId", "notMyId")
-      .property("AUTH.userKey", "notMyKey")
-      .property("AUTH.tenant", "notMyTenant")
-      .property("PATH.tenant", "tenant")
-      .property("PATH.organization", "organization")
-      .toRestClient();
-    clients.set(testClient);
+    fixture.config("RestClients." + UI_PATH_REST_CLIENT + ".Features", List.of(
+        JsonFeature.class.getName(),
+        TenantHeaderFeature.class.getName(),
+        CsrfHeaderFeature.class.getName()));
+    fixture.config("RestClients." + UI_PATH_REST_CLIENT + ".Properties.AUTH.clientId", "notMyId");
+    fixture.config("RestClients." + UI_PATH_REST_CLIENT + ".Properties.AUTH.userKey", "notMyKey");
+    fixture.config("RestClients." + UI_PATH_REST_CLIENT + ".Properties.AUTH.tenant", "notMyTenant");
+    fixture.config("RestClients." + UI_PATH_REST_CLIENT + ".Properties.PATH.tenant", "tenant");
+    fixture.config("RestClients." + UI_PATH_REST_CLIENT + ".Properties.PATH.organization", "organization");
   }
 
   @Test
