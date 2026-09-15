@@ -8,7 +8,7 @@ import jakarta.ws.rs.client.ClientRequestFilter;
 import jakarta.ws.rs.core.Feature;
 import jakarta.ws.rs.core.FeatureContext;
 
-import ch.ivyteam.ivy.rest.client.FeatureConfig;
+import ch.ivyteam.ivy.rest.client.feature.FeatureConfig;
 
 
 public class TenantHeaderFeature implements Feature
@@ -18,7 +18,7 @@ public class TenantHeaderFeature implements Feature
   @Override
   public boolean configure(FeatureContext context)
   {
-    var config = new FeatureConfig(context.getConfiguration(), TenantHeaderFeature.class);
+    var config = FeatureConfig.of(context.getConfiguration(), TenantHeaderFeature.class);
     String tenant = config.readMandatory(PROPERTY_NAME);
     context.register(new OrechstratorTenantFilter(tenant), Priorities.HEADER_DECORATOR);
     return true;
