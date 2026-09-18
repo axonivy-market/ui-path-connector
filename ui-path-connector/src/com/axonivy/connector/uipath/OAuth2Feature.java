@@ -11,7 +11,7 @@ import jakarta.ws.rs.core.Response.Status;
 
 import ch.ivyteam.ivy.bpm.error.BpmError;
 import ch.ivyteam.ivy.bpm.error.BpmPublicErrorBuilder;
-import ch.ivyteam.ivy.rest.client.FeatureConfig;
+import ch.ivyteam.ivy.rest.client.feature.FeatureConfig;
 import ch.ivyteam.ivy.rest.client.oauth2.OAuth2BearerFilter;
 import ch.ivyteam.ivy.rest.client.oauth2.OAuth2Error;
 import ch.ivyteam.ivy.rest.client.oauth2.OAuth2TokenRequester.AuthContext;
@@ -41,7 +41,7 @@ public class OAuth2Feature implements Feature
   @Override
   public boolean configure(FeatureContext context)
   {
-    var config = new FeatureConfig(context.getConfiguration(), OAuth2Feature.class);
+    var config = FeatureConfig.of(context.getConfiguration(), OAuth2Feature.class);
     var oauth2 = new OAuth2BearerFilter(
       OAuth2Feature::requestToken,
       new OAuth2UriProperty(config, Property.AUTH_BASE_URI, "https://account.uipath.com/oauth")
