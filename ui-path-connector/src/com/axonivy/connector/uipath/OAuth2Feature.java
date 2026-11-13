@@ -2,12 +2,12 @@ package com.axonivy.connector.uipath;
 
 import java.util.function.Function;
 
-import javax.ws.rs.Priorities;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.core.Feature;
-import javax.ws.rs.core.FeatureContext;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
+import jakarta.ws.rs.Priorities;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.core.Feature;
+import jakarta.ws.rs.core.FeatureContext;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
 
 import ch.ivyteam.ivy.bpm.error.BpmError;
 import ch.ivyteam.ivy.bpm.error.BpmPublicErrorBuilder;

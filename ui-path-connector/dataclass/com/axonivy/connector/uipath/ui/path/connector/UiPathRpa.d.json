@@ -1,0 +1,29 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "UiPathRpa",
+  "namespace" : "com.axonivy.connector.uipath.ui.path.connector",
+  "fields" : [ {
+    "name" : "jobToStart",
+    "modifiers" : [ ]
+  }, {
+    "name" : "license",
+    "type" : "com.uipath.orchestrator.LicenseDto",
+    "modifiers" : [ ]
+  }, {
+    "name" : "jobs",
+    "type" : "List<com.uipath.orchestrator.JobDto>",
+    "modifiers" : [ ]
+  }, {
+    "name" : "robots",
+    "type" : "List<com.uipath.orchestrator.RobotDto>",
+    "modifiers" : [ ]
+  }, {
+    "name" : "releases",
+    "type" : "List<com.uipath.orchestrator.ReleaseDto>",
+    "modifiers" : [ ]
+  }, {
+    "name" : "organizationunitId",
+    "type" : "Long",
+    "modifiers" : [ ]
+  } ]
+}

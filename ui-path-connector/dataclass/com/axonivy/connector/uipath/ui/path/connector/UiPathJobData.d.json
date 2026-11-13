@@ -1,0 +1,31 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/data-class.json",
+  "simpleName" : "UiPathJobData",
+  "namespace" : "com.axonivy.connector.uipath.ui.path.connector",
+  "fields" : [ {
+    "name" : "organizationunitId",
+    "type" : "Long",
+    "modifiers" : [ ]
+  }, {
+    "name" : "releases",
+    "type" : "java.util.List<com.uipath.orchestrator.ReleaseDto>",
+    "modifiers" : [ ]
+  }, {
+    "name" : "machines",
+    "type" : "java.util.List<com.uipath.orchestrator.MachineRobotDto>",
+    "modifiers" : [ ]
+  }, {
+    "name" : "startInfo",
+    "type" : "com.uipath.orchestrator.StartProcessDto",
+    "modifiers" : [ ]
+  }, {
+    "name" : "jobName",
+    "modifiers" : [ ]
+  }, {
+    "name" : "jobArguments",
+    "modifiers" : [ ]
+  }, {
+    "name" : "filter",
+    "modifiers" : [ ]
+  } ]
+}

@@ -11,7 +11,7 @@ import com.axonivy.connector.uipath.TenantHeaderFeature;
 import com.axonivy.connector.uipath.ui.path.connector.UiPathJobData;
 import com.axonivy.connector.uipath.ui.path.connector.UiPathRpa;
 
-import ch.ivyteam.ivy.application.IApplication;
+import ch.ivyteam.ivy.application.app.Application;
 import ch.ivyteam.ivy.bpm.engine.client.BpmClient;
 import ch.ivyteam.ivy.bpm.engine.client.ExecutionResult;
 import ch.ivyteam.ivy.bpm.engine.client.element.BpmElement;
@@ -36,7 +36,7 @@ public class UiPathTest {
   private static final BpmElement UI_PATH_RPA_END = BpmElement.pid("175F58F3612E10B1-f15");
 
   @BeforeAll
-  static void beforeAll(AppFixture fixture, IApplication app) {
+  static void beforeAll(AppFixture fixture, Application app) {
     fixture.config("RestClients." + UI_PATH_REST_CLIENT + ".Url", UiPathMock.URI);
     fixture.config("RestClients." + UI_PATH_REST_CLIENT + ".Features", "");
 
